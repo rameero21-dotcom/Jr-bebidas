@@ -46,7 +46,7 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 .cart-n{background:var(--rojo);color:#fff;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 55%,#1a0000 100%);padding:44px 24px 34px;text-align:center;position:relative;overflow:hidden}
+.hero{background-image:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.88) 100%),var(--hero-img,linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 55%,#1a0000 100%));background-size:cover;background-position:center;padding:54px 24px 40px;text-align:center;position:relative;overflow:hidden;transition:background-image .5s ease}
 .hero-tag{font-size:11px;color:var(--naranja);font-weight:800;letter-spacing:2px;margin-bottom:8px}
 .hero h2{font-family:"Barlow Condensed",sans-serif;font-size:42px;font-weight:900;color:#fff;line-height:.95;margin-bottom:10px;letter-spacing:1px}
 .hero h2 span{color:var(--rojo)}
@@ -538,10 +538,10 @@ function fmt(n) {
 
 /* ---------- HERO ---------- */
 const heroItems = [
-  {n:"FERNET <span>BRANCA</span>",d:"El clasico de siempre. Promos con hielo y gaseosa incluidos, listas para la previa."},
-  {n:"WHISKY <span>PREMIUM</span>",d:"Chivas, Jameson, Johnnie Walker y mas. Para regalar o para una noche especial."},
-  {n:"CERVEZAS <span>BIEN FRIAS</span>",d:"Nacionales e importadas en pack x6, para no quedarte corto."},
-  {n:"VINOS <span>DE MENDOZA</span>",d:"Malbec, blancos y rosados de las mejores bodegas argentinas."}
+  {n:"FERNET <span>BRANCA</span>",d:"El clasico de siempre. Promos con hielo y gaseosa incluidos, listas para la previa.",img:"images/hero/hero-fernet.png"},
+  {n:"WHISKY <span>PREMIUM</span>",d:"Chivas, Jameson, Johnnie Walker y mas. Para regalar o para una noche especial.",img:"images/hero/hero-whisky.png"},
+  {n:"CERVEZAS <span>BIEN FRIAS</span>",d:"Nacionales e importadas en pack x6, para no quedarte corto.",img:"images/hero/hero-cerveza.png"},
+  {n:"VINOS <span>DE MENDOZA</span>",d:"Malbec, blancos y rosados de las mejores bodegas argentinas.",img:"images/hero/hero-vino.png"}
 ];
 let heroIdx = 0, heroTimer = null;
 function renderHeroTabs(){
@@ -552,6 +552,7 @@ function setHero(i){
   heroIdx = i;
   document.getElementById("heroTitle").innerHTML = heroItems[i].n;
   document.getElementById("heroDesc").textContent = heroItems[i].d;
+  document.getElementById("inicio").style.setProperty("--hero-img", "url('"+heroItems[i].img+"')");
   renderHeroTabs();
 }
 function cicloHero(){
