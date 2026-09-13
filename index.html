@@ -43,7 +43,16 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 @media(min-width:520px){.searchbox input{width:190px}}
 .searchbox button{background:none;border:none;cursor:default;font-size:15px;padding:6px;opacity:.55}
 .cart-btn{background:var(--negro);border:none;color:#fff;padding:9px 14px;border-radius:6px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;letter-spacing:.5px}
-.cart-n{background:var(--rojo);color:#fff;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cart-n{background:var(--rojo);color:#fff;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.cart-n.bump{transform:scale(1.5)}
+
+/* ---------- press tactil global + aparicion en scroll ---------- */
+button{transition:transform .15s cubic-bezier(.34,1.56,.64,1)}
+button:active{transform:scale(.94)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s cubic-bezier(.22,.61,.36,1),transform .5s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+#catBody{transition:opacity .28s cubic-bezier(.22,.61,.36,1),transform .28s cubic-bezier(.22,.61,.36,1)}
+#catBody.cb-fade{opacity:0;transform:translateY(10px)}
 
 /* HERO */
 .hero{background-image:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.88) 100%),var(--hero-img,linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 55%,#1a0000 100%));background-size:cover;background-position:center;padding:54px 24px 40px;text-align:center;position:relative;overflow:hidden;transition:background-image .5s ease}
@@ -125,9 +134,10 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 .stepwrap{display:flex;align-items:center;gap:6px;background:#f2f2f2;border-radius:6px;padding:0 6px;flex:none}
 .stepbtn{width:22px;height:100%;border:none;background:transparent;font-weight:800;font-size:14px;cursor:pointer;color:var(--negro);padding:8px 0}
 .stepval{min-width:14px;text-align:center;font-weight:700;font-size:12.5px;font-variant-numeric:tabular-nums}
-.abtn{flex:1;width:100%;background:var(--negro);border:none;color:#fff;padding:9px;border-radius:6px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;cursor:pointer;letter-spacing:.5px}
+.abtn{flex:1;width:100%;background:var(--negro);border:none;color:#fff;padding:9px;border-radius:6px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;cursor:pointer;letter-spacing:.5px;transition:transform .16s cubic-bezier(.34,1.56,.64,1),background-color .2s ease}
 .abtn:hover{background:var(--rojo-osc)}
 .abtn.si{background:#166534}
+.abtn.pulse{transform:scale(1.06)}
 .noenc{grid-column:1/-1;text-align:center;padding:30px 10px;color:var(--sub);font-size:14px}
 .ordbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 .ordchip{background:#f2f2f2;border:1px solid #e5e5e5;color:#555;font-size:11.5px;font-weight:700;padding:6px 13px;border-radius:16px;cursor:pointer;font-family:"Barlow",sans-serif}
@@ -171,9 +181,10 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 .cta-b{background:transparent;color:#fff;border:2px solid #444!important}
 
 /* CARRITO */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200}
-.overlay.on{display:flex;align-items:flex-end;justify-content:center}
-.panel{background:#fff;width:100%;max-width:500px;max-height:92vh;border-radius:16px 16px 0 0;overflow-y:auto;padding:22px;color:var(--negro)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .32s ease,background-color .32s ease}
+.overlay.on{opacity:1;pointer-events:auto;background:rgba(0,0,0,.75)}
+.panel{background:#fff;width:100%;max-width:500px;max-height:92vh;border-radius:16px 16px 0 0;overflow-y:auto;padding:22px;color:var(--negro);transform:translateY(100%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.overlay.on .panel{transform:translateY(0)}
 .ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .ph h3{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:900}
 .xbtn{background:#eee;border:none;color:#333;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
@@ -284,7 +295,7 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
   <div class="hero-tabs" id="heroTabs"></div>
 </div>
 
-<div class="about">
+<div class="about reveal">
   <div class="about-tag">QUIENES SOMOS</div>
   <h3>GENTE QUE SABE LO QUE TOMA</h3>
   <p>Somos <b>un dark store de bebidas de La Plata</b>, pensado para resolverte la previa sin vueltas: cat&aacute;logo claro, stock real y respuestas r&aacute;pidas por WhatsApp cuando ten&eacute;s dudas.</p>
@@ -303,14 +314,14 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
   <h3 class="cat-h" style="margin-top:6px">TU PEDIDO EN TRES PASOS</h3>
   <p style="max-width:480px;margin:0 auto;color:#666;font-size:13.5px">Ac&aacute; no hay cuentas ni pagos online: arm&aacute;s todo desde el cat&aacute;logo y cerr&aacute;s el pedido directo por WhatsApp.</p>
   <div class="como-grid">
-    <div class="como-step"><div class="como-n">1</div><h4>Arm&aacute; tu lista</h4><p>Buscala por nombre o navegando las categor&iacute;as, y toc&aacute; Agregar cada vez que quieras sumar algo. Las cantidades se ajustan cuando quieras.</p></div>
-    <div class="como-step"><div class="como-n">2</div><h4>Complet&aacute; tus datos</h4><p>Abr&iacute; el pedido, cont&aacute;nos c&oacute;mo te llamas y c&oacute;mo prefer&iacute;s recibirlo. El mensaje para WhatsApp se arma solo.</p></div>
-    <div class="como-step"><div class="como-n">3</div><h4>Cerramos por WhatsApp</h4><p>Confirmamos stock, horario y forma de pago, y coordinamos la entrega o el retiro.</p></div>
+    <div class="como-step reveal"><div class="como-n">1</div><h4>Arm&aacute; tu lista</h4><p>Buscala por nombre o navegando las categor&iacute;as, y toc&aacute; Agregar cada vez que quieras sumar algo. Las cantidades se ajustan cuando quieras.</p></div>
+    <div class="como-step reveal"><div class="como-n">2</div><h4>Complet&aacute; tus datos</h4><p>Abr&iacute; el pedido, cont&aacute;nos c&oacute;mo te llamas y c&oacute;mo prefer&iacute;s recibirlo. El mensaje para WhatsApp se arma solo.</p></div>
+    <div class="como-step reveal"><div class="como-n">3</div><h4>Cerramos por WhatsApp</h4><p>Confirmamos stock, horario y forma de pago, y coordinamos la entrega o el retiro.</p></div>
   </div>
   <div class="info-grid">
-    <div class="info-card"><div class="ii">&#127970;</div><div class="tagline">GRATIS</div><h5>RETIRAS POR EL LOCAL</h5><p>Cerr&aacute;s el pedido y coordinamos por WhatsApp d&oacute;nde y cu&aacute;ndo pasar a buscarlo en La Plata.</p></div>
-    <div class="info-card"><div class="ii">&#128666;</div><div class="tagline">MISMO DIA</div><h5>TE LO ACERCAMOS</h5><p>Salimos a repartir el mismo d&iacute;a dentro de La Plata. El costo seg&uacute;n zona se confirma al cerrar el pedido.</p></div>
-    <div class="info-card"><div class="ii">&#128179;</div><div class="tagline">COMO QUIERAS</div><h5>EFECTIVO O TRANSFERENCIA</h5><p>El precio de contado es el que ves primero; transfiriendo se aplica el valor indicado debajo de cada producto.</p></div>
+    <div class="info-card reveal"><div class="ii">&#127970;</div><div class="tagline">GRATIS</div><h5>RETIRAS POR EL LOCAL</h5><p>Cerr&aacute;s el pedido y coordinamos por WhatsApp d&oacute;nde y cu&aacute;ndo pasar a buscarlo en La Plata.</p></div>
+    <div class="info-card reveal"><div class="ii">&#128666;</div><div class="tagline">MISMO DIA</div><h5>TE LO ACERCAMOS</h5><p>Salimos a repartir el mismo d&iacute;a dentro de La Plata. El costo seg&uacute;n zona se confirma al cerrar el pedido.</p></div>
+    <div class="info-card reveal"><div class="ii">&#128179;</div><div class="tagline">COMO QUIERAS</div><h5>EFECTIVO O TRANSFERENCIA</h5><p>El precio de contado es el que ves primero; transfiriendo se aplica el valor indicado debajo de cada producto.</p></div>
   </div>
 </div>
 
@@ -613,16 +624,40 @@ function catCounts(){
 }
 
 function renderCatBody(){
+  var body = document.getElementById("catBody");
+  body.classList.add("cb-fade");
+  setTimeout(function(){
+    renderCatBodyNow();
+    var b2 = document.getElementById("catBody");
+    requestAnimationFrame(function(){ b2.classList.remove("cb-fade"); });
+  }, 170);
+}
+function renderCatBodyNow(){
   const body = document.getElementById("catBody");
   if (busqueda.trim().length > 0) {
     renderBusqueda(body);
-    return;
-  }
-  if (!catActiva) {
+  } else if (!catActiva) {
     renderCategorias(body);
   } else {
     renderProductos(body, catActiva);
   }
+  observeReveals();
+}
+
+/* ---------- aparicion en scroll ---------- */
+var revealObserver = ("IntersectionObserver" in window) ? new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if (e.isIntersecting) { e.target.classList.add("in"); revealObserver.unobserve(e.target); }
+  });
+}, {threshold:.15}) : null;
+function observeReveals(){
+  if (!revealObserver) { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); return; }
+  var els = document.querySelectorAll(".reveal:not(.rv-bound)");
+  els.forEach(function(el, i){
+    el.classList.add("rv-bound");
+    el.style.transitionDelay = (Math.min(i,10)*50)+"ms";
+    revealObserver.observe(el);
+  });
 }
 
 function renderCategorias(body){
@@ -708,7 +743,7 @@ function cardHtml(p){
     ? '<div class="pimg pimg-foto" onclick="abrirFicha(\''+p.id+'\')"><img src="'+p.img+'" alt="'+p.n+'" loading="lazy"></div>'
     : '<div class="pimg '+claseCat[p.cat]+'" onclick="abrirFicha(\''+p.id+'\')">'+iconCat[p.cat]+'</div>';
   const cant = qtySel[p.id] || 1;
-  return '<div class="card'+(p.tag==="promo"||p.tag==="super"?" promo":"")+'">'+
+  return '<div class="card reveal'+(p.tag==="promo"||p.tag==="super"?" promo":"")+'">'+
     badge +
     pctBadge +
     foto +
@@ -770,7 +805,8 @@ function actuBtn(id) {
   if (b) {
     var q = carrito[id] ? carrito[id].qty : 0;
     b.textContent = q > 0 ? "En el pedido (" + q + ")" : "+ Agregar";
-    b.className = q > 0 ? "abtn si" : "abtn";
+    b.className = q > 0 ? "abtn si pulse" : "abtn pulse";
+    setTimeout(function(){ b.classList.remove("pulse"); }, 260);
   }
   var out = document.getElementById("qs_" + id);
   if (out) out.textContent = "1";
@@ -779,7 +815,11 @@ function actuBtn(id) {
 function actuBadge() {
   var tot = 0;
   for (var k in carrito) tot += carrito[k].qty;
-  document.getElementById("cn").textContent = tot;
+  var n = document.getElementById("cn");
+  n.textContent = tot;
+  n.classList.remove("bump");
+  void n.offsetWidth;
+  n.classList.add("bump");
 }
 
 /* ---------- FICHA DE PRODUCTO ---------- */
