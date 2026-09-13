@@ -114,8 +114,7 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 .ic-vino{background:linear-gradient(135deg,#6b0f1a,#2a0509)}
 .ic-espumantes{background:linear-gradient(135deg,#d4af37,#8a6d1a)}
 .ic-sinalcohol{background:linear-gradient(135deg,#1a8fe3,#0a3a6b)}
-.ic-tabaco{background:linear-gradient(135deg,#5a5a5a,#1a1a1a)}
-.pimg.ic-promos,.pimg.ic-cerveza,.pimg.ic-aperitivos,.pimg.ic-whisky,.pimg.ic-blancas,.pimg.ic-vino,.pimg.ic-espumantes,.pimg.ic-sinalcohol,.pimg.ic-tabaco{color:#fff}
+.pimg.ic-promos,.pimg.ic-cerveza,.pimg.ic-aperitivos,.pimg.ic-whisky,.pimg.ic-blancas,.pimg.ic-vino,.pimg.ic-espumantes,.pimg.ic-sinalcohol{color:#fff}
 
 /* COMO COMPRAR */
 .como{padding:44px 20px;background:#fff;text-align:center}
@@ -356,10 +355,10 @@ var entrega = "domicilio";
 var catActiva = null;
 var busqueda = "";
 
-const nomCat={promos:"Ofertas",cerveza:"Cervezas",aperitivos:"Aperitivos",whisky:"Whiskies y Licores",blancas:"Bebidas Blancas",vino:"Vinos",espumantes:"Espumantes",sinalcohol:"Bebidas sin Alcohol",tabaco:"Tabaco y Accesorios"};
-const iconCat={promos:"&#127881;",cerveza:"&#127866;",aperitivos:"&#127864;",whisky:"&#129347;",blancas:"&#127865;",vino:"&#127863;",espumantes:"&#127870;",sinalcohol:"&#129348;",tabaco:"&#128684;"};
-const claseCat={promos:"ic-promos",cerveza:"ic-cerveza",aperitivos:"ic-aperitivos",whisky:"ic-whisky",blancas:"ic-blancas",vino:"ic-vino",espumantes:"ic-espumantes",sinalcohol:"ic-sinalcohol",tabaco:"ic-tabaco"};
-const ordenCat=["promos","cerveza","aperitivos","whisky","blancas","vino","espumantes","sinalcohol","tabaco"];
+const nomCat={promos:"Ofertas",cerveza:"Cervezas",aperitivos:"Aperitivos",whisky:"Whiskies y Licores",blancas:"Bebidas Blancas",vino:"Vinos",espumantes:"Espumantes",sinalcohol:"Bebidas sin Alcohol"};
+const iconCat={promos:"&#127881;",cerveza:"&#127866;",aperitivos:"&#127864;",whisky:"&#129347;",blancas:"&#127865;",vino:"&#127863;",espumantes:"&#127870;",sinalcohol:"&#129348;"};
+const claseCat={promos:"ic-promos",cerveza:"ic-cerveza",aperitivos:"ic-aperitivos",whisky:"ic-whisky",blancas:"ic-blancas",vino:"ic-vino",espumantes:"ic-espumantes",sinalcohol:"ic-sinalcohol"};
+const ordenCat=["promos","cerveza","aperitivos","whisky","blancas","vino","espumantes","sinalcohol"];
 
 const prods=[
 // OFERTAS
@@ -409,10 +408,10 @@ const prods=[
 {id:"w2",cat:"whisky",n:"Sheridans",d:null,p:49500,pe:59400,tag:null,img:"images/productos/w2-sheridans.jpg"},
 {id:"w3",cat:"whisky",n:"Baileys Original",d:null,p:32000,pe:38400,tag:null,img:"images/productos/w3-baileys-original.jpg"},
 {id:"w4",cat:"whisky",n:"Tia Maria Cream",d:null,p:14900,pe:17880,tag:null,img:"images/productos/w4-tia-maria-cream.jpg"},
-{id:"w5",cat:"whisky",n:"Malibu",d:null,p:17500,pe:21000,tag:null},
-{id:"w6",cat:"whisky",n:"Ballantines 750ml",d:null,p:40400,pe:48500,tag:null},
+{id:"w5",cat:"whisky",n:"Malibu",d:null,p:17500,pe:21000,tag:null,img:"images/productos/w5-malibu.jpg"},
+{id:"w6",cat:"whisky",n:"Ballantines 750ml",d:null,p:40400,pe:48500,tag:null,img:"images/productos/w6-ballantines-750.jpg"},
 {id:"w7",cat:"whisky",n:"Jameson 750ml",d:null,p:44700,pe:53650,tag:null,img:"images/productos/w7-jameson-750.jpg"},
-{id:"w8",cat:"whisky",n:"Jameson IPA",d:null,p:52900,pe:63500,tag:null},
+{id:"w8",cat:"whisky",n:"Jameson IPA",d:null,p:52900,pe:63500,tag:null,img:"images/productos/w8-jameson-ipa.jpg"},
 {id:"w9",cat:"whisky",n:"Jameson Black Barrel",d:null,p:75800,pe:90960,tag:null},
 {id:"w10",cat:"whisky",n:"Chivas 12 x 1L",d:null,p:92700,pe:111250,tag:null,img:"images/productos/w10-chivas-12-1l.jpg"},
 {id:"w11",cat:"whisky",n:"Chivas XV",d:null,p:120000,pe:144000,tag:null},
@@ -491,45 +490,6 @@ const prods=[
 {id:"s4",cat:"sinalcohol",n:"Gaseosa 2,25L",d:null,p:5500,pe:6600,tag:null,v:["Coca-Cola","Sprite","Tonica","Pomelo"]},
 {id:"s5",cat:"sinalcohol",n:"Baggio 1L",d:null,p:2500,pe:3000,tag:null},
 {id:"s6",cat:"sinalcohol",n:"Hielo bolsa",d:null,p:4500,pe:5400,tag:null},
-// TABACO Y ACCESORIOS
-{id:"t1",cat:"tabaco",n:"Libella Slim 6x15mm 200u Menta",d:null,p:3000,pe:3600,tag:null},
-{id:"t2",cat:"tabaco",n:"Libella Regular 8x15mm 200u",d:null,p:2700,pe:2970,tag:null},
-{id:"t3",cat:"tabaco",n:"Libella Regular Long 8x22mm 200u",d:null,p:3500,pe:3850,tag:null},
-{id:"t4",cat:"tabaco",n:"Gizeh Slim Menthol 6mm 120u",d:null,p:2800,pe:3080,tag:null},
-{id:"t5",cat:"tabaco",n:"Rok Mini Tips",d:null,p:500,pe:600,tag:null,v:["Rosa","Blanco","Negro","Biodegradables"]},
-{id:"t6",cat:"tabaco",n:"Gizeh King Size Slim (Tips)",d:null,p:1400,pe:1540,tag:null},
-{id:"t7",cat:"tabaco",n:"OCB Biodegradable",d:null,p:1100,pe:1210,tag:null},
-{id:"t8",cat:"tabaco",n:"Look Out 30gr",d:null,p:8600,pe:9460,tag:null},
-{id:"t9",cat:"tabaco",n:"Red Field 30gr",d:null,p:6000,pe:7200,tag:null},
-{id:"t10",cat:"tabaco",n:"Waikiki 30gr",d:null,p:5600,pe:6720,tag:null},
-{id:"t11",cat:"tabaco",n:"Stanley 30gr",d:"Varios sabores, consultar",p:5800,pe:6380,tag:null},
-{id:"t12",cat:"tabaco",n:"Choice 30gr",d:"Varios, consultar",p:7200,pe:7920,tag:null},
-{id:"t13",cat:"tabaco",n:"Cheetah Vintage 30gr",d:null,p:7000,pe:8400,tag:null},
-{id:"t14",cat:"tabaco",n:"Cerrito 45gr",d:null,p:6000,pe:7200,tag:null},
-{id:"t15",cat:"tabaco",n:"Puro Argentino 50gr Aromatic Blend",d:null,p:8000,pe:8800,tag:null},
-{id:"t16",cat:"tabaco",n:"Puro Argentino 50gr Original",d:null,p:8000,pe:8800,tag:null},
-{id:"t17",cat:"tabaco",n:"Arlequin",d:"Varios, consultar",p:5600,pe:6160,tag:null},
-{id:"t18",cat:"tabaco",n:"Don Jose 50gr",d:null,p:4200,pe:5050,tag:null},
-{id:"t19",cat:"tabaco",n:"Manitou 35gr",d:null,p:10000,pe:11000,tag:null},
-{id:"t20",cat:"tabaco",n:"Mac Baren 30gr",d:null,p:7300,pe:8030,tag:null},
-{id:"t21",cat:"tabaco",n:"Turner 30gr",d:null,p:7300,pe:8030,tag:null},
-{id:"t22",cat:"tabaco",n:"Drum 40gr",d:null,p:6900,pe:7590,tag:null},
-{id:"t23",cat:"tabaco",n:"Moro 30gr Blend",d:null,p:6700,pe:7370,tag:null},
-{id:"t24",cat:"tabaco",n:"Las Hojas Premium 30gr",d:null,p:5600,pe:6720,tag:null},
-{id:"t25",cat:"tabaco",n:"Las Hojas 30gr (Uva)",d:null,p:5600,pe:6160,tag:null},
-{id:"t26",cat:"tabaco",n:"Golden Virginia 30gr",d:null,p:7000,pe:7700,tag:null},
-{id:"t27",cat:"tabaco",n:"Horizon 30gr",d:null,p:4900,pe:5390,tag:null},
-{id:"t28",cat:"tabaco",n:"Unitas Excellent Apple 30gr",d:null,p:3100,pe:3410,tag:null},
-{id:"t29",cat:"tabaco",n:"Argento 40gr",d:null,p:5600,pe:6160,tag:null},
-{id:"t30",cat:"tabaco",n:"Sauvage 30gr",d:null,p:8700,pe:10400,tag:null},
-{id:"t31",cat:"tabaco",n:"OCB (variedad aleatoria)",d:null,p:1000,pe:1200,tag:null},
-{id:"t32",cat:"tabaco",n:"Libella (variedad aleatoria)",d:null,p:800,pe:880,tag:null},
-{id:"t33",cat:"tabaco",n:"Rok Celulosa",d:null,p:1200,pe:1450,tag:null},
-{id:"t34",cat:"tabaco",n:"Stamps Celulosa",d:null,p:1500,pe:1800,tag:null},
-{id:"t35",cat:"tabaco",n:"Gizeh (variedad aleatoria)",d:null,p:1000,pe:1100,tag:null},
-{id:"t36",cat:"tabaco",n:"Gizeh King Size Slim",d:null,p:2000,pe:2200,tag:null},
-{id:"t37",cat:"tabaco",n:"OCB metal 1/4",d:null,p:9000,pe:10800,tag:null},
-{id:"t38",cat:"tabaco",n:"OCB acrilico 1/4",d:null,p:7700,pe:9240,tag:null},
 ];
 
 function fmt(n) {
