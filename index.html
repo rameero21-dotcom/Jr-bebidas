@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JR Bebidas Dark Store</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--negro:#0a0a0a;--rojo:#E31E24;--rojo-osc:#B01419;--blanco:#fff;--gris:#1a1a1a;--gris2:#2a2a2a;--gris3:#3a3a3a;--sub:#888;--naranja:#FF8C1A;--verde:#25D366}
 body{background:var(--blanco);color:var(--negro);font-family:"Barlow",sans-serif;min-height:100vh}
@@ -91,7 +91,7 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 .pimg{height:96px;display:flex;align-items:center;justify-content:center;font-size:34px;position:relative}
 .pinfo{padding:11px 12px 13px}
 .pcat{font-size:9px;color:var(--sub);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;font-weight:700}
-.pname{font-family:"Barlow Condensed",sans-serif;font-size:14.5px;font-weight:800;line-height:1.15;margin-bottom:3px;color:var(--negro)}
+.pname{font-family:"Playfair Display",serif;font-size:15.5px;font-weight:500;line-height:1.25;margin-bottom:3px;color:var(--negro)}
 .pdesc{font-size:10.5px;color:var(--sub);margin-bottom:8px;line-height:1.3}
 .pvar{width:100%;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;padding:6px 8px;font-size:11.5px;font-family:"Barlow",sans-serif;margin-bottom:8px;color:var(--negro)}
 .pprice-row{margin-bottom:10px}
@@ -198,14 +198,14 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 <div class="agewrap" id="agegate">
   <div class="agebox">
     <div class="age-ico">&#127866;</div>
-    <div class="age-tag">ANTES DE ENTRAR</div>
-    <h2>&iquest;SOS MAYOR DE 18?</h2>
-    <p>La venta de bebidas alcoh&oacute;licas est&aacute; prohibida para menores de 18 a&ntilde;os. Para entrar a la tienda confirm&aacute; que sos mayor de edad.</p>
+    <div class="age-tag">UN PASO ANTES</div>
+    <h2>&iquest;YA CUMPLISTE 18?</h2>
+    <p>Por ley, solo pueden comprar bebidas con alcohol las personas mayores de edad. Confirmanos tu edad para seguir navegando el cat&aacute;logo.</p>
     <div class="agebtns">
-      <button class="age-si" onclick="confirmarEdad(true)">S&Iacute;, SOY MAYOR</button>
-      <button class="age-no" onclick="confirmarEdad(false)">NO</button>
+      <button class="age-si" onclick="confirmarEdad(true)">TENGO 18 O MAS</button>
+      <button class="age-no" onclick="confirmarEdad(false)">TODAVIA NO</button>
     </div>
-    <div class="age-blocked" id="ageBlocked">Lo sentimos, este sitio es solo para mayores de 18 a&ntilde;os.</div>
+    <div class="age-blocked" id="ageBlocked">Este cat&aacute;logo es exclusivo para personas mayores de 18 a&ntilde;os.</div>
   </div>
 </div>
 
@@ -238,42 +238,42 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 </div>
 
 <div class="about">
-  <div class="about-tag">SOBRE NOSOTROS</div>
-  <h3>ATENDIDO POR QUIEN SABE</h3>
-  <p>Somos <b>la tienda de bebidas del barrio</b>, en La Plata. Ac&aacute; no vas a encontrar una g&oacute;ndola infinita: vas a encontrar variedad real, precios claros y a alguien que te dice la verdad sobre lo que vende.</p>
-  <p>Tenemos fernet, cerveza, vinos, whisky, aperitivos y todo lo que hace falta para la previa. Si no sab&eacute;s qu&eacute; llevar, escribinos: te recomendamos seg&uacute;n la ocasi&oacute;n y el bolsillo.</p>
+  <div class="about-tag">QUIENES SOMOS</div>
+  <h3>GENTE QUE SABE LO QUE TOMA</h3>
+  <p>Somos <b>un dark store de bebidas de La Plata</b>, pensado para resolverte la previa sin vueltas: cat&aacute;logo claro, stock real y respuestas r&aacute;pidas por WhatsApp cuando ten&eacute;s dudas.</p>
+  <p>Manejamos fernet, cervezas, vinos, whisky y todos los cl&aacute;sicos de una buena juntada. &iquest;No sab&eacute;s qu&eacute; pedir? Contanos el plan y te tiramos una sugerencia a medida.</p>
 </div>
 
 <div class="cat-region" id="catalogo">
-  <div class="cat-tag">TODO LO QUE TENEMOS</div>
-  <div class="cat-h">NUESTROS PRODUCTOS</div>
-  <div class="cat-sub">Busc&aacute; lo que quieras o entr&aacute; a una categor&iacute;a y tocá <b>Agregar</b>. Vas armando el pedido y al final lo mand&aacute;s por WhatsApp, listo para coordinar la entrega y el pago.</div>
+  <div class="cat-tag">EXPLORA EL CATALOGO</div>
+  <div class="cat-h">LO QUE TENEMOS PARA VOS</div>
+  <div class="cat-sub">Us&aacute; el buscador o meten en una categor&iacute;a y tocá <b>Agregar</b> en cada cosa que quieras. Al final revis&aacute;s el pedido y lo mand&aacute;s por WhatsApp para coordinar entrega y pago.</div>
   <div id="catBody"></div>
 </div>
 
 <div class="como" id="como">
-  <div class="about-tag">COMO COMPRAR</div>
-  <h3 class="cat-h" style="margin-top:6px">PEDIR ES ASI DE SIMPLE</h3>
-  <p style="max-width:480px;margin:0 auto;color:#666;font-size:13.5px">No hace falta registrarse ni pagar online. Arm&aacute;s el pedido ac&aacute; y lo cerr&aacute;s por WhatsApp, como si nos escribieras.</p>
+  <div class="about-tag">ASI FUNCIONA</div>
+  <h3 class="cat-h" style="margin-top:6px">TU PEDIDO EN TRES PASOS</h3>
+  <p style="max-width:480px;margin:0 auto;color:#666;font-size:13.5px">Ac&aacute; no hay cuentas ni pagos online: arm&aacute;s todo desde el cat&aacute;logo y cerr&aacute;s el pedido directo por WhatsApp.</p>
   <div class="como-grid">
-    <div class="como-step"><div class="como-n">1</div><h4>Eleg&iacute; lo que quer&eacute;s</h4><p>Busc&aacute; por nombre o entr&aacute; a una categor&iacute;a y toc&aacute; Agregar. Pod&eacute;s sumar y sacar cantidades cuando quieras.</p></div>
-    <div class="como-step"><div class="como-n">2</div><h4>Mandalo por WhatsApp</h4><p>Cuando termin&aacute;s, abr&iacute;s tu pedido y complet&aacute;s tus datos. Se abre el chat con la lista ya escrita: solo apret&aacute;s enviar.</p></div>
-    <div class="como-step"><div class="como-n">3</div><h4>Coordinamos y listo</h4><p>Te confirmamos todo, arreglamos si lo retir&aacute;s o te lo llevamos, y c&oacute;mo prefer&iacute;s pagar.</p></div>
+    <div class="como-step"><div class="como-n">1</div><h4>Arm&aacute; tu lista</h4><p>Buscala por nombre o navegando las categor&iacute;as, y toc&aacute; Agregar cada vez que quieras sumar algo. Las cantidades se ajustan cuando quieras.</p></div>
+    <div class="como-step"><div class="como-n">2</div><h4>Complet&aacute; tus datos</h4><p>Abr&iacute; el pedido, cont&aacute;nos c&oacute;mo te llamas y c&oacute;mo prefer&iacute;s recibirlo. El mensaje para WhatsApp se arma solo.</p></div>
+    <div class="como-step"><div class="como-n">3</div><h4>Cerramos por WhatsApp</h4><p>Confirmamos stock, horario y forma de pago, y coordinamos la entrega o el retiro.</p></div>
   </div>
   <div class="info-grid">
-    <div class="info-card"><div class="ii">&#127970;</div><div class="tagline">SIN COSTO</div><h5>RETIRO EN LOCAL</h5><p>Arm&aacute;s el pedido y coordin&aacute;s por WhatsApp d&oacute;nde retirarlo en La Plata.</p></div>
-    <div class="info-card"><div class="ii">&#128666;</div><div class="tagline">EN EL DIA</div><h5>ENVIO A DOMICILIO</h5><p>Repartimos en el d&iacute;a en La Plata. Consult&aacute; el costo de env&iacute;o por tu zona al cerrar el pedido.</p></div>
-    <div class="info-card"><div class="ii">&#128179;</div><div class="tagline">EFECTIVO O TRANSFERENCIA</div><h5>COMO PAGAR</h5><p>Los precios de la web son en efectivo. Pagando con transferencia se aplica el valor con recargo que ves en cada producto.</p></div>
+    <div class="info-card"><div class="ii">&#127970;</div><div class="tagline">GRATIS</div><h5>RETIRAS POR EL LOCAL</h5><p>Cerr&aacute;s el pedido y coordinamos por WhatsApp d&oacute;nde y cu&aacute;ndo pasar a buscarlo en La Plata.</p></div>
+    <div class="info-card"><div class="ii">&#128666;</div><div class="tagline">MISMO DIA</div><h5>TE LO ACERCAMOS</h5><p>Salimos a repartir el mismo d&iacute;a dentro de La Plata. El costo seg&uacute;n zona se confirma al cerrar el pedido.</p></div>
+    <div class="info-card"><div class="ii">&#128179;</div><div class="tagline">COMO QUIERAS</div><h5>EFECTIVO O TRANSFERENCIA</h5><p>El precio de contado es el que ves primero; transfiriendo se aplica el valor indicado debajo de cada producto.</p></div>
   </div>
 </div>
 
 <div class="cta">
-  <div class="cta-tag">HACE TU PEDIDO</div>
-  <h3>&iquest;ARMAMOS EL TUYO?</h3>
-  <p>Eleg&iacute; lo que necesit&aacute;s del cat&aacute;logo y mandanos el pedido por WhatsApp. Te lo llevamos a tu casa o lo retir&aacute;s por el local.</p>
+  <div class="cta-tag">LISTO PARA PEDIR</div>
+  <h3>&iquest;EMPEZAMOS TU PEDIDO?</h3>
+  <p>Sum&aacute; lo que necesit&aacute;s desde el cat&aacute;logo y mandalo por WhatsApp cuando quieras. Vos eleg&iacute;s si lo pasamos a buscar o te lo acercamos.</p>
   <div class="cta-btns">
-    <a href="#catalogo" class="cta-a">VER LOS PRODUCTOS</a>
-    <button class="cta-b" onclick="abrirCarrito()">VER MI PEDIDO</button>
+    <a href="#catalogo" class="cta-a">IR AL CATALOGO</a>
+    <button class="cta-b" onclick="abrirCarrito()">ABRIR MI PEDIDO</button>
   </div>
 </div>
 
@@ -281,7 +281,7 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
   <p>La Plata, Buenos Aires &nbsp;&middot;&nbsp; <strong>JR Bebidas Dark Store</strong></p>
   <p style="margin-top:4px">Lunes a Sabado de 15:00 a 21:00hs &middot; Envios en el dia</p>
   <p style="margin-top:4px"><a href="https://wa.me/5492216138637" style="text-decoration:none;color:#666">WhatsApp: 221 613-8637</a></p>
-  <div class="flegal">Beber con moderaci&oacute;n &middot; Prohibida la venta a menores de 18 a&ntilde;os</div>
+  <div class="flegal">Consumo responsable &middot; Venta exclusiva para mayores de 18 a&ntilde;os</div>
 </div>
 
 <a class="wa-float" href="https://wa.me/5492216138637" target="_blank">&#128172; Escribinos</a>
