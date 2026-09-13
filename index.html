@@ -183,13 +183,30 @@ button:active{transform:scale(.94)}
 .como-step h4{font-family:"Domine",serif;font-size:16px;font-weight:700;margin-bottom:6px}
 .como-step p{font-size:12.5px;color:#666;line-height:1.5}
 
-.info-grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:960px;margin:30px auto 0;padding:0 20px 44px}
-@media(min-width:760px){.info-grid{grid-template-columns:repeat(3,1fr)}}
-.info-card{border:1px solid #eee;border-radius:12px;padding:20px;text-align:center}
-.info-card .ii{font-size:24px;margin-bottom:8px}
-.info-card h5{font-family:"Domine",serif;font-size:14.5px;font-weight:700;margin-bottom:4px;letter-spacing:0}
-.info-card .tagline{font-size:11px;color:var(--rojo);font-weight:700;letter-spacing:.5px;margin-bottom:8px}
-.info-card p{font-size:12px;color:#666;line-height:1.5}
+/* RETIRO / ENVIO / PAGO - franja oscura */
+.info-band{position:relative;background:#0f0d0c;padding:52px 20px 58px;text-align:center;overflow:hidden}
+.info-band-grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter><rect width="100%25" height="100%25" filter="url(%23n)"/></svg>')}
+.info-band-hair{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18) 50%,transparent)}
+.info-band-hair.top{top:0}
+.info-band-hair.bottom{bottom:0}
+.info-band-inner{position:relative;z-index:1}
+.info-band-rule{width:26px;height:2px;background:var(--rojo);margin:0 auto 14px}
+.info-band-tag{font-size:10.5px;font-weight:700;letter-spacing:3px;color:var(--rojo);text-transform:uppercase;margin-bottom:10px}
+.info-band-h{font-family:"Domine",serif;font-size:24px;font-weight:700;color:#fff;margin:0 0 40px}
+.info-grid{display:grid;grid-template-columns:1fr;gap:8px;max-width:960px;margin:0 auto;text-align:left}
+@media(min-width:760px){.info-grid{grid-template-columns:repeat(3,1fr);gap:0}}
+.info-card{position:relative;padding:18px 22px;overflow:hidden}
+@media(min-width:760px){.info-card:not(:last-child)::after{content:"";position:absolute;right:0;top:4px;bottom:4px;width:1px;background:rgba(255,255,255,.14)}}
+.info-card:hover{transform:translateX(3px)}
+.info-card:nth-child(2){transition-delay:.08s}
+.info-card:nth-child(3){transition-delay:.16s}
+.info-ghost{position:absolute;top:-18px;right:6px;font-family:"Domine",serif;font-size:92px;font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.09);line-height:1;pointer-events:none;z-index:0;transition:color .3s ease}
+.info-card:hover .info-ghost{-webkit-text-stroke:1px rgba(227,30,36,.35)}
+.info-card-content{position:relative;z-index:1}
+.info-line{width:16px;height:1.5px;background:var(--rojo);margin-bottom:10px}
+.info-card h5{font-family:"Domine",serif;font-size:16px;font-weight:700;color:#fff;margin:0 0 8px;letter-spacing:0}
+.info-card .tagline{font-size:10.5px;color:var(--rojo);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+.info-card p{font-size:12.5px;color:#a39d95;line-height:1.55}
 
 .cta{background:var(--negro);text-align:center;padding:44px 20px}
 .cta-tag{font-size:11px;color:#9a958c;font-weight:800;letter-spacing:2px;margin-bottom:8px}
@@ -358,10 +375,45 @@ button:active{transform:scale(.94)}
     <div class="como-step reveal"><div class="como-n">2</div><h4>Complet&aacute; tus datos</h4><p>Abr&iacute; el pedido, cont&aacute;nos c&oacute;mo te llamas y c&oacute;mo prefer&iacute;s recibirlo. El mensaje para WhatsApp se arma solo.</p></div>
     <div class="como-step reveal"><div class="como-n">3</div><h4>Cerramos por WhatsApp</h4><p>Confirmamos stock, horario y forma de pago, y coordinamos la entrega o el retiro.</p></div>
   </div>
-  <div class="info-grid">
-    <div class="info-card reveal"><div class="ii">&#127970;</div><div class="tagline">GRATIS</div><h5>RETIRAS POR EL LOCAL</h5><p>Cerr&aacute;s el pedido y coordinamos por WhatsApp d&oacute;nde y cu&aacute;ndo pasar a buscarlo en La Plata.</p></div>
-    <div class="info-card reveal"><div class="ii">&#128666;</div><div class="tagline">MISMO DIA</div><h5>TE LO ACERCAMOS</h5><p>Salimos a repartir el mismo d&iacute;a dentro de La Plata. El costo seg&uacute;n zona se confirma al cerrar el pedido.</p></div>
-    <div class="info-card reveal"><div class="ii">&#128179;</div><div class="tagline">COMO QUIERAS</div><h5>EFECTIVO O TRANSFERENCIA</h5><p>El precio de contado es el que ves primero; transfiriendo se aplica el valor indicado debajo de cada producto.</p></div>
+</div>
+
+<div class="info-band">
+  <div class="info-band-grain"></div>
+  <div class="info-band-hair top"></div>
+  <div class="info-band-hair bottom"></div>
+  <div class="info-band-inner">
+    <div class="info-band-rule"></div>
+    <div class="info-band-tag">Como funciona</div>
+    <div class="info-band-h">Retiro, env&iacute;o y pago</div>
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <div class="info-ghost">01</div>
+        <div class="info-card-content">
+          <div class="info-line"></div>
+          <div class="tagline">GRATIS</div>
+          <h5>RETIRAS POR EL LOCAL</h5>
+          <p>Cerr&aacute;s el pedido y coordinamos por WhatsApp d&oacute;nde y cu&aacute;ndo pasar a buscarlo en La Plata.</p>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-ghost">02</div>
+        <div class="info-card-content">
+          <div class="info-line"></div>
+          <div class="tagline">MISMO DIA</div>
+          <h5>TE LO ACERCAMOS</h5>
+          <p>Salimos a repartir el mismo d&iacute;a dentro de La Plata. El costo seg&uacute;n zona se confirma al cerrar el pedido.</p>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-ghost">03</div>
+        <div class="info-card-content">
+          <div class="info-line"></div>
+          <div class="tagline">COMO QUIERAS</div>
+          <h5>EFECTIVO O TRANSFERENCIA</h5>
+          <p>El precio de contado es el que ves primero; transfiriendo se aplica el valor indicado debajo de cada producto.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
