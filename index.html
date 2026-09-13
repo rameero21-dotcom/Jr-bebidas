@@ -56,11 +56,17 @@ button:active{transform:scale(.94)}
 #catBody.cb-fade{opacity:0;transform:translateY(10px)}
 
 /* HERO */
-.hero{background:#0a0a0a;padding:54px 24px 40px;text-align:center;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity 1.1s ease;z-index:0}
-.hero-bg.on{opacity:1}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.88) 100%)}
-.hero-tag,.hero>h2,.hero>p,.hero-btn,.hero-tabs{position:relative;z-index:1}
+.hero{background:#0a0a0a;padding:120px 24px 46px;text-align:center;position:relative;overflow:hidden;min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+@media(min-width:760px){.hero{min-height:82vh}}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,.5) 45%,rgba(10,10,10,.92) 100%);z-index:0}
+.hero-tag,.hero>h2,.hero>p,.hero-btn,.hero-tabs,.hero-badges{position:relative;z-index:1}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px;max-width:420px}
+.hero-badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;font-weight:700;padding:7px 13px;border-radius:20px;font-family:"PT Sans",sans-serif;letter-spacing:.2px;backdrop-filter:blur(2px)}
+.ticker{background:var(--rojo);overflow:hidden;white-space:nowrap;padding:9px 0;position:relative}
+.ticker-track{display:inline-block;animation:ticker-scroll 22s linear infinite;color:#fff;font-family:"PT Sans",sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px}
+@keyframes ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
 .hero-tag{font-size:11px;color:var(--naranja);font-weight:800;letter-spacing:2px;margin-bottom:8px}
 .hero h2{font-family:"Domine",serif;font-size:37px;font-weight:700;color:#fff;line-height:1.05;margin-bottom:10px;letter-spacing:0}
 .hero h2 span{color:var(--rojo)}
@@ -302,14 +308,21 @@ button:active{transform:scale(.94)}
 </header>
 
 <div class="hero" id="inicio">
-  <div class="hero-bg" id="heroBgA"></div>
-  <div class="hero-bg" id="heroBgB"></div>
+  <video class="hero-video" autoplay muted loop playsinline poster="images/hero/hero-aperitivos.jpg">
+    <source src="images/hero/hero-bg-video.mp4" type="video/mp4">
+  </video>
   <div class="hero-tag">LO MAS PEDIDO</div>
   <h2 id="heroTitle">FERNET <span>BRANCA</span></h2>
   <p id="heroDesc">El clasico de siempre. Promos con hielo y gaseosa incluidos, listas para la previa.</p>
   <a href="#catalogo" class="hero-btn">VER PRODUCTOS</a>
+  <div class="hero-badges">
+    <span class="hero-badge">&#128666; Env&iacute;o en el d&iacute;a</span>
+    <span class="hero-badge">&#128179; Efectivo o transferencia</span>
+    <span class="hero-badge">&#127866; +150 productos</span>
+  </div>
   <div class="hero-tabs" id="heroTabs"></div>
 </div>
+<div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
 
 <div class="about reveal">
   <div class="about-tag">QUIENES SOMOS</div>
@@ -621,21 +634,19 @@ function renderHeroTabs(){
   const w = document.getElementById("heroTabs");
   w.innerHTML = heroItems.map((h,i)=>'<span class="hero-tab'+(i===heroIdx?" on":"")+'">'+h.n.replace(/<[^>]+>/g,"")+'</span>').join("");
 }
-let heroLayerOn = "A";
 function setHero(i){
   heroIdx = i;
   document.getElementById("heroTitle").innerHTML = heroItems[i].n;
   document.getElementById("heroDesc").textContent = heroItems[i].d;
-  var showEl = document.getElementById(heroLayerOn === "A" ? "heroBgB" : "heroBgA");
-  var hideEl = document.getElementById(heroLayerOn === "A" ? "heroBgA" : "heroBgB");
-  showEl.style.backgroundImage = "url('"+heroItems[i].img+"')";
-  showEl.classList.add("on");
-  hideEl.classList.remove("on");
-  heroLayerOn = heroLayerOn === "A" ? "B" : "A";
   renderHeroTabs();
 }
 function cicloHero(){
   heroTimer = setInterval(function(){ setHero((heroIdx+1)%heroItems.length); }, 5000);
+}
+function initTicker(){
+  var items = ["&#128666; ENVIOS EN EL DIA","&#128179; EFECTIVO O TRANSFERENCIA","&#127866; +150 PRODUCTOS","&#128205; LA PLATA"];
+  var line = items.join(' &nbsp;&middot;&nbsp; ') + ' &nbsp;&middot;&nbsp; ';
+  document.getElementById("tickerTrack").innerHTML = line + line;
 }
 
 /* ---------- CATALOGO ---------- */
@@ -1075,6 +1086,7 @@ function confirmarEdad(si){
   if (okEdad) document.getElementById("agegate").hidden = true;
   setHero(0);
   cicloHero();
+  initTicker();
   renderCatBody();
 })();
 </script>
