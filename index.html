@@ -77,7 +77,8 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 }
 .catcard::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.15),rgba(0,0,0,.55))}
 .catcard-txt{position:relative;display:flex;align-items:center;gap:14px}
-.catcard .cicon{font-size:30px;flex:none}
+.catcard .cicon{position:relative;flex:none;width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center}
+.catcard .cicon svg{width:24px;height:24px;display:block}
 .catcard b{font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:800;letter-spacing:.3px;display:block}
 .catcard small{font-size:11.5px;color:#eee;margin-top:2px;display:block}
 .catcard-cta{
@@ -104,6 +105,7 @@ header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
 .pct-badge b{font-size:11px;font-weight:800}
 .pct-badge i{font-size:5.5px;font-style:normal;letter-spacing:.3px}
 .pimg{height:96px;display:flex;align-items:center;justify-content:center;font-size:34px;position:relative;cursor:pointer}
+.pimg svg{width:42px;height:42px}
 .pimg-foto{background:#f7f4ef;height:170px}
 .pimg-foto img{width:100%;height:100%;object-fit:contain;padding:4px;display:block}
 .pinfo{padding:11px 12px 13px}
@@ -416,7 +418,17 @@ const ORDEN_LABELS = {recom:"Recomendados", precioAsc:"Precio: menor", precioDes
 const UPSELL_MAP = {promos:["s4","s6"], aperitivos:["s4","s6"], whisky:["s1","s6"], blancas:["s1","s6"], cerveza:["s6"], vino:[], espumantes:[], sinalcohol:[]};
 
 const nomCat={promos:"Ofertas",cerveza:"Cervezas",aperitivos:"Aperitivos",whisky:"Whiskies y Licores",blancas:"Bebidas Blancas",vino:"Vinos",espumantes:"Espumantes",sinalcohol:"Bebidas sin Alcohol"};
-const iconCat={promos:"&#127881;",cerveza:"&#127866;",aperitivos:"&#127864;",whisky:"&#129347;",blancas:"&#127865;",vino:"&#127863;",espumantes:"&#127870;",sinalcohol:"&#129348;"};
+const svgAttr='viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+const iconCat={
+  promos:'<svg '+svgAttr+'><path d="M12 3l1.6 3.8 3.9.7-3 2.9.8 4.1L12 12.5l-3.3 1.9.8-4-3-2.9 3.9-.7L12 3z"/></svg>',
+  cerveza:'<svg '+svgAttr+'><rect x="7.5" y="6" width="7" height="13" rx="1"/><path d="M7.5 6c0-1.5.5-2.5 2-2.5h3c1.5 0 2 1 2 2.5"/><path d="M14.5 9h1.5a1.5 1.5 0 0 1 1.5 1.5v2a1.5 1.5 0 0 1-1.5 1.5h-1.5"/><line x1="9" y1="9" x2="13" y2="9"/></svg>',
+  aperitivos:'<svg '+svgAttr+'><path d="M6 6h12l-5 6.25V19"/><line x1="8.5" y1="19" x2="15.5" y2="19"/><circle cx="12" cy="8.5" r=".8" fill="#fff" stroke="none"/></svg>',
+  whisky:'<svg '+svgAttr+'><rect x="7" y="8" width="10" height="10" rx="1"/><path d="M9 12h2v2H9z"/><line x1="7" y1="11" x2="17" y2="11"/></svg>',
+  blancas:'<svg '+svgAttr+'><path d="M10 3h4v3l2 2v11a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1V8l2-2V3z"/><line x1="10" y1="3" x2="14" y2="3"/><line x1="8" y1="12" x2="16" y2="12"/></svg>',
+  vino:'<svg '+svgAttr+'><path d="M8 5h8l-.75 7a3.25 3.25 0 0 1-6.5 0L8 5z"/><line x1="12" y1="15" x2="12" y2="19.5"/><line x1="9" y1="19.5" x2="15" y2="19.5"/></svg>',
+  espumantes:'<svg '+svgAttr+'><path d="M10.5 4c-.5 1.5.5 2 .5 3.5s-1 1.5-1 3 1 1.5 1 3v6h2v-6c0-1.5 1-1.5 1-3s-1-1.5-1-3 1-2 .5-3.5"/><line x1="9" y1="19" x2="13" y2="19"/><circle cx="15.5" cy="8" r=".6" fill="#fff" stroke="none"/><circle cx="16.5" cy="10.5" r=".5" fill="#fff" stroke="none"/></svg>',
+  sinalcohol:'<svg '+svgAttr+'><path d="M9 4h6l.5 3-1 1v10a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V8l-1-1L9 4z"/><line x1="8.5" y1="11" x2="15.5" y2="11"/></svg>'
+};
 const claseCat={promos:"ic-promos",cerveza:"ic-cerveza",aperitivos:"ic-aperitivos",whisky:"ic-whisky",blancas:"ic-blancas",vino:"ic-vino",espumantes:"ic-espumantes",sinalcohol:"ic-sinalcohol"};
 const ordenCat=["promos","cerveza","aperitivos","whisky","blancas","vino","espumantes","sinalcohol"];
 
@@ -491,12 +503,12 @@ const prods=[
 {id:"w25",cat:"whisky",n:"Glenfiddich",d:null,p:143000,pe:171600,tag:null,img:"images/productos/w25-glenfiddich.jpg"},
 // BEBIDAS BLANCAS
 {id:"bb1",cat:"blancas",n:"Smirnoff Regular",d:null,p:10000,pe:12000,tag:null,img:"images/productos/bb1-smirnoff-regular.jpg"},
-{id:"bb2",cat:"blancas",n:"Smirnoff Citric variedades",d:null,p:12000,pe:14400,tag:null},
+{id:"bb2",cat:"blancas",n:"Smirnoff Citric variedades",d:null,p:12000,pe:14400,tag:null,img:"images/productos/bb2-smirnoff-citric.jpg"},
 {id:"bb3",cat:"blancas",n:"Smirnoff Watermelon",d:null,p:12000,pe:14400,tag:null,img:"images/productos/bb3-smirnoff-watermelon.jpg"},
 {id:"bb4",cat:"blancas",n:"Smirnoff Raspberry",d:null,p:12000,pe:14400,tag:null,img:"images/productos/bb4-smirnoff-raspberry.jpg"},
-{id:"bb5",cat:"blancas",n:"Smirnoff Citrus",d:null,p:12000,pe:14400,tag:null},
-{id:"bb6",cat:"blancas",n:"Smirnoff Green Apple",d:null,p:12000,pe:14400,tag:null},
-{id:"bb7",cat:"blancas",n:"Smirnoff Tropical",d:null,p:12000,pe:14400,tag:null},
+{id:"bb5",cat:"blancas",n:"Smirnoff Citrus",d:null,p:12000,pe:14400,tag:null,img:"images/productos/bb5-smirnoff-citrus.jpg"},
+{id:"bb6",cat:"blancas",n:"Smirnoff Green Apple",d:null,p:12000,pe:14400,tag:null,img:"images/productos/bb6-smirnoff-green-apple.jpg"},
+{id:"bb7",cat:"blancas",n:"Smirnoff Tropical",d:null,p:12000,pe:14400,tag:null,img:"images/productos/bb7-smirnoff-tropical.jpg"},
 {id:"bb8",cat:"blancas",n:"Sky Regular",d:null,p:11000,pe:13200,tag:null},
 {id:"bb9",cat:"blancas",n:"Sky Saborizado",d:null,p:13000,pe:15600,tag:null,v:["Anana","Maracuya","Durazno","Raspberry"]},
 {id:"bb10",cat:"blancas",n:"Sky Cosmic",d:null,p:13000,pe:15600,tag:null},
