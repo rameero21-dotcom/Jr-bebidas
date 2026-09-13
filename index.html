@@ -87,7 +87,7 @@ button:active{transform:scale(.94)}
 
 .catgrid{display:flex;flex-direction:column;gap:12px;padding:0 0 20px}
 .catcard{
-  background:var(--negro) center/cover no-repeat;border:none;border-radius:12px;padding:22px 20px;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,#242424,#0a0a0a) center/cover no-repeat;border:none;border-radius:12px;padding:22px 20px;color:#fff;cursor:pointer;
   text-align:left;position:relative;overflow:hidden;min-height:104px;width:100%;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
   transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease;
@@ -353,7 +353,7 @@ button:active{transform:scale(.94)}
 
 <div class="foot" id="contacto">
   <p>La Plata, Buenos Aires &nbsp;&middot;&nbsp; <strong>JR Bebidas Dark Store</strong></p>
-  <p style="margin-top:4px">Lunes a Sabado de 15:00 a 21:00hs &middot; Envios en el dia</p>
+  <p style="margin-top:4px">Lunes a S&aacute;bado de 15:00 a 21:00hs &middot; Env&iacute;os en el d&iacute;a</p>
   <p style="margin-top:4px"><a href="https://wa.me/5492216138637" style="text-decoration:none;color:#666">WhatsApp: 221 613-8637</a></p>
   <div class="paytrust">
     <span class="paychip">TRANSFERENCIA</span>
@@ -384,7 +384,7 @@ button:active{transform:scale(.94)}
     <div id="cc"></div>
     <div class="form" id="frm" style="display:none">
       <label class="lbl">TU NOMBRE</label>
-      <input class="inp" id="inp_n" type="text" placeholder="Como te llamas?">
+      <input class="inp" id="inp_n" type="text" placeholder="&iquest;C&oacute;mo te llamas?">
 
       <label class="lbl">COMO LO QUERES RECIBIR</label>
       <div class="entrega">
@@ -399,11 +399,11 @@ button:active{transform:scale(.94)}
       </div>
       <div id="dirWrap">
         <label class="lbl">DIRECCION DE ENTREGA</label>
-        <input class="inp" id="inp_d" type="text" placeholder="Calle y numero, La Plata">
+        <input class="inp" id="inp_d" type="text" placeholder="Calle y n&uacute;mero, La Plata">
       </div>
 
       <label class="lbl">TELEFONO</label>
-      <input class="inp" id="inp_t" type="tel" placeholder="Tu numero de contacto">
+      <input class="inp" id="inp_t" type="tel" placeholder="Tu n&uacute;mero de contacto">
 
       <label class="lbl">FORMA DE PAGO</label>
       <div class="pagos">
@@ -930,7 +930,7 @@ function copiarAlias() {
       btn.classList.remove("copied");
     }, 2000);
   }).catch(function() {
-    prompt("Copia el alias:", alias);
+    prompt("Copiá el alias:", alias);
   });
 }
 
@@ -971,7 +971,7 @@ function renderCarrito() {
   var cc = document.getElementById("cc");
   var frm = document.getElementById("frm");
   if (!items.length) {
-    cc.innerHTML = "<div class=\"vacio\">Tu pedido esta vacio.</div>";
+    cc.innerHTML = "<div class=\"vacio\">Tu pedido está vacío.</div>";
     frm.style.display = "none";
     return;
   }
@@ -1029,17 +1029,17 @@ function enviarPedido() {
   var n = document.getElementById("inp_n").value.trim();
   var d = entrega === "domicilio" ? document.getElementById("inp_d").value.trim() : "";
   var t = document.getElementById("inp_t").value.trim();
-  if (!n || !t || (entrega === "domicilio" && !d)) { alert("Completa nombre, telefono" + (entrega==="domicilio" ? " y direccion." : ".")); return; }
+  if (!n || !t || (entrega === "domicilio" && !d)) { alert("Completá nombre, teléfono" + (entrega==="domicilio" ? " y dirección." : ".")); return; }
   var items = [];
   for (var k in carrito) { if (carrito[k].qty > 0) items.push({key:k, it:carrito[k]}); }
-  if (!items.length) { alert("El pedido esta vacio."); return; }
+  if (!items.length) { alert("El pedido está vacío."); return; }
   if (pago === "transferencia") {
     var chk = document.getElementById("chkTransferido");
-    if (!chk.checked) { alert("Confirma que ya hiciste la transferencia antes de enviar el pedido."); return; }
+    if (!chk.checked) { alert("Confirmá que ya hiciste la transferencia antes de enviar el pedido."); return; }
   }
   var msg = "Nuevo Pedido JR Bebidas Dark Store\n\n";
   msg += "Cliente: " + n + "\n";
-  msg += entrega === "domicilio" ? ("Entrega: Envio a domicilio\nDireccion: " + d + "\n") : "Entrega: Retiro en local\n";
+  msg += entrega === "domicilio" ? ("Entrega: Envío a domicilio\nDirección: " + d + "\n") : "Entrega: Retiro en local\n";
   msg += "Tel: " + t + "\n";
   if (pago === "transferencia") {
     msg += "Pago: Transferencia ABONADA a alias Ramiro.dlz\n\n";
