@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JR Bebidas Dark Store</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@600;700&family=PT+Sans:wght@400;700&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--negro:#0a0a0a;--rojo:#E31E24;--rojo-osc:#B01419;--blanco:#fff;--gris:#1a1a1a;--gris2:#2a2a2a;--gris3:#3a3a3a;--sub:#888;--naranja:#FF8C1A;--verde:#25D366}
-body{background:var(--blanco);color:var(--negro);font-family:"Barlow",sans-serif;min-height:100vh}
+body{background:var(--blanco);color:var(--negro);font-family:"PT Sans",sans-serif;min-height:100vh}
 a{color:inherit}
 
 /* AGE GATE */
@@ -17,10 +17,10 @@ a{color:inherit}
 .agebox{background:#fff;border-radius:16px;padding:32px 26px;max-width:380px;text-align:center}
 .age-ico{font-size:40px;margin-bottom:10px}
 .age-tag{font-size:11px;color:var(--rojo);font-weight:800;letter-spacing:2px;margin-bottom:6px}
-.agebox h2{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:900;margin-bottom:12px}
+.agebox h2{font-family:"PT Sans",sans-serif;font-size:28px;font-weight:900;margin-bottom:12px}
 .agebox p{font-size:13.5px;color:#555;line-height:1.5;margin-bottom:20px}
 .agebtns{display:flex;gap:10px}
-.agebtns button{flex:1;padding:13px;border-radius:8px;font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:800;letter-spacing:.5px;cursor:pointer;border:2px solid var(--negro)}
+.agebtns button{flex:1;padding:13px;border-radius:8px;font-family:"PT Sans",sans-serif;font-size:15px;font-weight:800;letter-spacing:.5px;cursor:pointer;border:2px solid var(--negro)}
 .age-si{background:var(--negro);color:#fff}
 .age-no{background:#fff;color:var(--negro)}
 .age-blocked{display:none;font-size:13px;color:var(--rojo-osc);font-weight:700;margin-top:14px}
@@ -31,18 +31,18 @@ a{color:inherit}
 /* HEADER */
 header{background:#fff;border-bottom:1px solid #eee;padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;flex-wrap:wrap}
 header img{width:44px;height:44px;border-radius:8px;object-fit:cover}
-.ht h1{font-family:"Barlow Condensed",sans-serif;font-size:19px;font-weight:900;color:var(--negro);letter-spacing:.5px;line-height:1}
-.ht span{font-family:"Barlow Condensed",sans-serif;font-size:9px;color:var(--rojo);font-weight:700;letter-spacing:2px}
+.ht h1{font-family:"PT Sans",sans-serif;font-size:19px;font-weight:900;color:var(--negro);letter-spacing:.5px;line-height:1}
+.ht span{font-family:"PT Sans",sans-serif;font-size:9px;color:var(--rojo);font-weight:700;letter-spacing:2px}
 .navlinks{display:none}
 @media(min-width:860px){.navlinks{display:flex;gap:22px;margin-left:16px}
-.navlinks a{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:700;color:var(--negro);text-decoration:none;letter-spacing:.5px}
+.navlinks a{font-family:"PT Sans",sans-serif;font-size:14px;font-weight:700;color:var(--negro);text-decoration:none;letter-spacing:.5px}
 .navlinks a:hover{color:var(--rojo)}}
 .hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px}
 .searchbox{display:flex;align-items:center;background:#f2f2f2;border:1px solid #e5e5e5;border-radius:20px;padding:0 6px 0 14px;height:38px}
-.searchbox input{border:none;background:transparent;outline:none;font-family:"Barlow",sans-serif;font-size:13px;width:130px;color:var(--negro)}
+.searchbox input{border:none;background:transparent;outline:none;font-family:"PT Sans",sans-serif;font-size:13px;width:130px;color:var(--negro)}
 @media(min-width:520px){.searchbox input{width:190px}}
 .searchbox button{background:none;border:none;cursor:default;font-size:15px;padding:6px;opacity:.55}
-.cart-btn{background:var(--negro);border:none;color:#fff;padding:9px 14px;border-radius:6px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;letter-spacing:.5px}
+.cart-btn{background:var(--negro);border:none;color:#fff;padding:9px 14px;border-radius:6px;font-family:"PT Sans",sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;letter-spacing:.5px}
 .cart-n{background:var(--rojo);color:#fff;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
 .cart-n.bump{transform:scale(1.5)}
 
@@ -61,25 +61,25 @@ button:active{transform:scale(.94)}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.88) 100%)}
 .hero-tag,.hero>h2,.hero>p,.hero-btn,.hero-tabs{position:relative;z-index:1}
 .hero-tag{font-size:11px;color:var(--naranja);font-weight:800;letter-spacing:2px;margin-bottom:8px}
-.hero h2{font-family:"Barlow Condensed",sans-serif;font-size:42px;font-weight:900;color:#fff;line-height:.95;margin-bottom:10px;letter-spacing:1px}
+.hero h2{font-family:"PT Sans",sans-serif;font-size:42px;font-weight:900;color:#fff;line-height:.95;margin-bottom:10px;letter-spacing:1px}
 .hero h2 span{color:var(--rojo)}
 .hero p{color:#ccc;font-size:14.5px;margin-bottom:22px;max-width:480px;margin-left:auto;margin-right:auto}
-.hero-btn{display:inline-block;background:var(--naranja);color:#1a0d00;border:none;padding:13px 30px;border-radius:6px;font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;cursor:pointer;text-decoration:none}
+.hero-btn{display:inline-block;background:var(--naranja);color:#1a0d00;border:none;padding:13px 30px;border-radius:6px;font-family:"PT Sans",sans-serif;font-size:15px;font-weight:800;letter-spacing:1px;cursor:pointer;text-decoration:none}
 .hero-tabs{display:flex;justify-content:center;gap:8px;margin-top:26px;flex-wrap:wrap}
-.hero-tab{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#ccc;padding:6px 14px;border-radius:16px;font-size:11.5px;font-weight:700;cursor:default;font-family:"Barlow Condensed",sans-serif;letter-spacing:.5px;display:inline-block;transition:background .3s,border-color .3s,color .3s}
+.hero-tab{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#ccc;padding:6px 14px;border-radius:16px;font-size:11.5px;font-weight:700;cursor:default;font-family:"PT Sans",sans-serif;letter-spacing:.5px;display:inline-block;transition:background .3s,border-color .3s,color .3s}
 .hero-tab.on{background:var(--rojo);border-color:var(--rojo);color:#fff}
 
 /* SOBRE NOSOTROS */
 .about{padding:40px 20px;background:#faf8f5;text-align:center}
 .about-tag{font-size:11px;color:var(--rojo);font-weight:700;letter-spacing:2px;margin-bottom:8px}
-.about h3{font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:900;margin-bottom:14px;line-height:1.1}
+.about h3{font-family:"PT Sans",sans-serif;font-size:26px;font-weight:900;margin-bottom:14px;line-height:1.1}
 .about p{font-size:14px;color:#444;line-height:1.6;max-width:540px;margin:0 auto 12px}
 .about p b{color:var(--negro)}
 
 /* CATALOGO */
 .cat-region{padding:8px 16px 8px;background:#faf6f0}
 .cat-tag{font-size:11px;color:var(--rojo);font-weight:700;letter-spacing:2px;text-align:center;margin-top:26px}
-.cat-h{font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:900;text-align:center;margin:6px 0 6px}
+.cat-h{font-family:"PT Sans",sans-serif;font-size:26px;font-weight:900;text-align:center;margin:6px 0 6px}
 .cat-sub{font-size:13px;color:#666;text-align:center;max-width:480px;margin:0 auto 20px;line-height:1.5}
 
 .catgrid{display:flex;flex-direction:column;gap:12px;padding:0 0 20px}
@@ -95,15 +95,15 @@ button:active{transform:scale(.94)}
 .catcard-txt{position:relative;display:flex;align-items:center;gap:14px}
 .catcard .cicon{position:relative;flex:none;width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center}
 .catcard .cicon svg{width:24px;height:24px;display:block}
-.catcard b{font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:800;letter-spacing:.3px;display:block}
+.catcard b{font-family:"PT Sans",sans-serif;font-size:20px;font-weight:800;letter-spacing:.3px;display:block}
 .catcard small{font-size:11.5px;color:#eee;margin-top:2px;display:block}
 .catcard-cta{
-  position:relative;flex:none;background:var(--naranja);color:#1a0d00;font-family:"Barlow Condensed",sans-serif;
+  position:relative;flex:none;background:var(--naranja);color:#1a0d00;font-family:"PT Sans",sans-serif;
   font-weight:800;font-size:12px;letter-spacing:.4px;padding:8px 14px;border-radius:6px;white-space:nowrap;
 }
 @media(max-width:520px){.catcard-cta{display:none}}
 
-.backbtn{background:none;border:none;color:var(--rojo);font-family:"Barlow Condensed",sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;letter-spacing:.3px;margin-bottom:10px;padding:0}
+.backbtn{background:none;border:none;color:var(--rojo);font-family:"PT Sans",sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;letter-spacing:.3px;margin-bottom:10px;padding:0}
 
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 0 16px}
 @media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
@@ -116,7 +116,7 @@ button:active{transform:scale(.94)}
 .pct-badge{
   position:absolute;top:8px;right:8px;z-index:2;background:var(--rojo);color:#fff;border-radius:50%;
   width:34px;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  line-height:1;font-family:"Barlow Condensed",sans-serif;box-shadow:0 1px 3px rgba(0,0,0,.25);
+  line-height:1;font-family:"PT Sans",sans-serif;box-shadow:0 1px 3px rgba(0,0,0,.25);
 }
 .pct-badge b{font-size:11px;font-weight:800}
 .pct-badge i{font-size:5.5px;font-style:normal;letter-spacing:.3px}
@@ -126,25 +126,25 @@ button:active{transform:scale(.94)}
 .pimg-foto img{width:100%;height:100%;object-fit:contain;padding:4px;display:block}
 .pinfo{padding:11px 12px 13px}
 .pcat{font-size:9px;color:var(--sub);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px;font-weight:700}
-.pname{font-family:"Playfair Display",serif;font-size:15.5px;font-weight:500;line-height:1.25;margin-bottom:3px;color:var(--negro)}
+.pname{font-family:"Domine",serif;font-size:15.5px;font-weight:500;line-height:1.25;margin-bottom:3px;color:var(--negro)}
 .pdesc{font-size:10.5px;color:var(--sub);margin-bottom:8px;line-height:1.3}
-.pvar{width:100%;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;padding:6px 8px;font-size:11.5px;font-family:"Barlow",sans-serif;margin-bottom:8px;color:var(--negro)}
+.pvar{width:100%;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;padding:6px 8px;font-size:11.5px;font-family:"PT Sans",sans-serif;margin-bottom:8px;color:var(--negro)}
 .pprice-row{margin-bottom:10px}
 .pprice-old{font-size:11px;color:var(--sub);text-decoration:line-through;font-variant-numeric:tabular-nums}
 .pprice-oldlbl{text-decoration:none;font-size:9.5px;margin-left:2px}
-.pprice{font-family:"Barlow Condensed",sans-serif;font-size:18px;font-weight:600;color:var(--rojo);font-variant-numeric:tabular-nums}
+.pprice{font-family:"PT Sans",sans-serif;font-size:18px;font-weight:600;color:var(--rojo);font-variant-numeric:tabular-nums}
 .pprice-tag{font-size:9px;color:var(--sub);font-weight:600;margin-left:4px;text-transform:uppercase}
 .addrow{display:flex;gap:6px;align-items:stretch}
 .stepwrap{display:flex;align-items:center;gap:6px;background:#f2f2f2;border-radius:6px;padding:0 6px;flex:none}
 .stepbtn{width:22px;height:100%;border:none;background:transparent;font-weight:800;font-size:14px;cursor:pointer;color:var(--negro);padding:8px 0}
 .stepval{min-width:14px;text-align:center;font-weight:700;font-size:12.5px;font-variant-numeric:tabular-nums}
-.abtn{flex:1;width:100%;background:var(--negro);border:none;color:#fff;padding:9px;border-radius:6px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;cursor:pointer;letter-spacing:.5px;transition:transform .16s cubic-bezier(.34,1.56,.64,1),background-color .2s ease}
+.abtn{flex:1;width:100%;background:var(--negro);border:none;color:#fff;padding:9px;border-radius:6px;font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800;cursor:pointer;letter-spacing:.5px;transition:transform .16s cubic-bezier(.34,1.56,.64,1),background-color .2s ease}
 .abtn:hover{background:var(--rojo-osc)}
 .abtn.si{background:#166534}
 .abtn.pulse{transform:scale(1.06)}
 .noenc{grid-column:1/-1;text-align:center;padding:30px 10px;color:var(--sub);font-size:14px}
 .ordbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.ordchip{background:#f2f2f2;border:1px solid #e5e5e5;color:#555;font-size:11.5px;font-weight:700;padding:6px 13px;border-radius:16px;cursor:pointer;font-family:"Barlow",sans-serif}
+.ordchip{background:#f2f2f2;border:1px solid #e5e5e5;color:#555;font-size:11.5px;font-weight:700;padding:6px 13px;border-radius:16px;cursor:pointer;font-family:"PT Sans",sans-serif}
 .ordchip.on{background:var(--negro);border-color:var(--negro);color:#fff}
 
 /* iconos de categoria (miniaturas ilustradas, sin fotos de terceros) */
@@ -163,24 +163,24 @@ button:active{transform:scale(.94)}
 .como-grid{display:grid;grid-template-columns:1fr;gap:22px;max-width:820px;margin:26px auto 0;text-align:left}
 @media(min-width:760px){.como-grid{grid-template-columns:repeat(3,1fr)}}
 .como-step{background:#faf8f5;border-radius:12px;padding:20px}
-.como-n{width:30px;height:30px;border-radius:50%;background:var(--negro);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:15px;margin-bottom:10px}
-.como-step h4{font-family:"Barlow Condensed",sans-serif;font-size:17px;font-weight:800;margin-bottom:6px}
+.como-n{width:30px;height:30px;border-radius:50%;background:var(--negro);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"PT Sans",sans-serif;font-weight:900;font-size:15px;margin-bottom:10px}
+.como-step h4{font-family:"PT Sans",sans-serif;font-size:17px;font-weight:800;margin-bottom:6px}
 .como-step p{font-size:12.5px;color:#666;line-height:1.5}
 
 .info-grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:960px;margin:30px auto 0;padding:0 20px 44px}
 @media(min-width:760px){.info-grid{grid-template-columns:repeat(3,1fr)}}
 .info-card{border:1px solid #eee;border-radius:12px;padding:20px;text-align:center}
 .info-card .ii{font-size:24px;margin-bottom:8px}
-.info-card h5{font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:800;margin-bottom:4px;letter-spacing:.3px}
+.info-card h5{font-family:"PT Sans",sans-serif;font-size:15px;font-weight:800;margin-bottom:4px;letter-spacing:.3px}
 .info-card .tagline{font-size:11px;color:var(--rojo);font-weight:700;letter-spacing:.5px;margin-bottom:8px}
 .info-card p{font-size:12px;color:#666;line-height:1.5}
 
 .cta{background:var(--negro);text-align:center;padding:44px 20px}
 .cta-tag{font-size:11px;color:var(--naranja);font-weight:800;letter-spacing:2px;margin-bottom:8px}
-.cta h3{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:900;color:#fff;margin-bottom:10px}
+.cta h3{font-family:"PT Sans",sans-serif;font-size:28px;font-weight:900;color:#fff;margin-bottom:10px}
 .cta p{color:#ccc;font-size:13.5px;max-width:440px;margin:0 auto 22px;line-height:1.5}
 .cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.cta-btns a,.cta-btns button{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;letter-spacing:.5px;padding:12px 22px;border-radius:6px;cursor:pointer;text-decoration:none;border:none}
+.cta-btns a,.cta-btns button{font-family:"PT Sans",sans-serif;font-size:14px;font-weight:800;letter-spacing:.5px;padding:12px 22px;border-radius:6px;cursor:pointer;text-decoration:none;border:none}
 .cta-a{background:var(--naranja);color:#1a0d00}
 .cta-b{background:transparent;color:#fff;border:2px solid #444!important}
 
@@ -190,7 +190,7 @@ button:active{transform:scale(.94)}
 .panel{background:#fff;width:100%;max-width:500px;max-height:92vh;border-radius:16px 16px 0 0;overflow-y:auto;padding:22px;color:var(--negro);transform:translateY(100%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
 .overlay.on .panel{transform:translateY(0)}
 .ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.ph h3{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:900}
+.ph h3{font-family:"PT Sans",sans-serif;font-size:22px;font-weight:900}
 .xbtn{background:#eee;border:none;color:#333;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .ci{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #eee}
 .cii{flex:1}
@@ -201,8 +201,8 @@ button:active{transform:scale(.94)}
 .qn{font-weight:700;font-size:14px;min-width:20px;text-align:center}
 .vacio{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
 .form{margin-top:20px}
-.lbl{font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;color:#666;letter-spacing:.5px;margin-bottom:6px;display:block}
-.inp{width:100%;background:#f5f5f5;border:1px solid #ddd;color:var(--negro);padding:11px 14px;border-radius:8px;font-size:15px;font-family:"Barlow",sans-serif;margin-bottom:14px;outline:none}
+.lbl{font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800;color:#666;letter-spacing:.5px;margin-bottom:6px;display:block}
+.inp{width:100%;background:#f5f5f5;border:1px solid #ddd;color:var(--negro);padding:11px 14px;border-radius:8px;font-size:15px;font-family:"PT Sans",sans-serif;margin-bottom:14px;outline:none}
 .inp:focus{border-color:var(--rojo)}
 .entrega{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
 .pagos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
@@ -210,12 +210,12 @@ button:active{transform:scale(.94)}
 .po.on{border-color:var(--rojo);background:#fff0f0}
 .po input{display:none}
 .pi{font-size:22px;margin-bottom:4px}
-.pn{font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800}
+.pn{font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800}
 .mp-box{display:none;background:#009EE3;border-radius:8px;padding:14px;margin-bottom:16px;text-align:center}
 .mp-box.show{display:block}
-.mp-label{font-family:"Barlow Condensed",sans-serif;font-size:11px;color:#fff;opacity:.9;letter-spacing:.5px;margin-bottom:6px}
-.mp-alias{font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:900;color:#fff;letter-spacing:1px;margin-bottom:10px}
-.mp-copy{background:#fff;color:#009EE3;border:none;padding:7px 18px;border-radius:6px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;cursor:pointer}
+.mp-label{font-family:"PT Sans",sans-serif;font-size:11px;color:#fff;opacity:.9;letter-spacing:.5px;margin-bottom:6px}
+.mp-alias{font-family:"PT Sans",sans-serif;font-size:20px;font-weight:900;color:#fff;letter-spacing:1px;margin-bottom:10px}
+.mp-copy{background:#fff;color:#009EE3;border:none;padding:7px 18px;border-radius:6px;font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800;cursor:pointer}
 .mp-copy.copied{background:#166534;color:#fff}
 .mp-nota{font-size:10.5px;color:#fff;opacity:.9;margin-top:10px;line-height:1.4}
 .confirm-box{display:none;align-items:center;gap:8px;background:#f5f5f5;border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin-bottom:16px}
@@ -223,20 +223,20 @@ button:active{transform:scale(.94)}
 .confirm-box input[type=checkbox]{width:20px;height:20px;accent-color:var(--rojo);flex-shrink:0}
 .confirm-box label{font-size:12.5px;color:var(--negro);line-height:1.4}
 .tbar{display:flex;justify-content:space-between;align-items:center;background:#f5f5f5;border-radius:8px;padding:14px;margin-bottom:16px}
-.tlbl{font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:800;color:#666}
-.tval{font-family:"Barlow Condensed",sans-serif;font-size:26px;font-weight:600;color:var(--rojo);font-variant-numeric:tabular-nums}
-.sbtn{width:100%;background:var(--verde);border:none;color:#fff;padding:15px;border-radius:8px;font-family:"Barlow Condensed",sans-serif;font-size:17px;font-weight:900;cursor:pointer;letter-spacing:1px}
+.tlbl{font-family:"PT Sans",sans-serif;font-size:15px;font-weight:800;color:#666}
+.tval{font-family:"PT Sans",sans-serif;font-size:26px;font-weight:600;color:var(--rojo);font-variant-numeric:tabular-nums}
+.sbtn{width:100%;background:var(--verde);border:none;color:#fff;padding:15px;border-radius:8px;font-family:"PT Sans",sans-serif;font-size:17px;font-weight:900;cursor:pointer;letter-spacing:1px}
 .sbtn:hover{background:#1eb954}
 .sbtn:disabled{background:#ccc;cursor:not-allowed}
 
 /* WHATSAPP FLOTANTE */
-.wa-float{position:fixed;bottom:20px;left:20px;background:var(--verde);color:#fff;border:none;border-radius:30px;padding:12px 20px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,.25);z-index:80;cursor:pointer;text-decoration:none}
+.wa-float{position:fixed;bottom:20px;left:20px;background:var(--verde);color:#fff;border:none;border-radius:30px;padding:12px 20px;font-family:"PT Sans",sans-serif;font-size:14px;font-weight:800;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,.25);z-index:80;cursor:pointer;text-decoration:none}
 
 .foot{text-align:center;padding:30px 20px;color:#999;font-size:12px;border-top:1px solid #eee;background:#faf8f5}
 .foot strong{color:var(--rojo)}
 .foot .flegal{margin-top:10px;font-size:10.5px;color:#aaa;line-height:1.6}
 .paytrust{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-.paychip{font-family:"Barlow Condensed",sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.5px;border:1px solid #ddd;border-radius:5px;padding:5px 11px;color:#888;background:#fff}
+.paychip{font-family:"PT Sans",sans-serif;font-size:10.5px;font-weight:800;letter-spacing:.5px;border:1px solid #ddd;border-radius:5px;padding:5px 11px;color:#888;background:#fff}
 
 /* FICHA DE PRODUCTO */
 .pm-foto{background:#f7f4ef;border-radius:10px;overflow:hidden;height:220px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;position:relative}
@@ -244,15 +244,15 @@ button:active{transform:scale(.94)}
 .pm-icon{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;color:#fff}
 .pm-icon svg{width:72px;height:72px}
 .pm-cat{font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:4px}
-.pm-name{font-family:"Playfair Display",serif;font-size:22px;font-weight:600;margin-bottom:10px;color:var(--negro)}
+.pm-name{font-family:"Domine",serif;font-size:22px;font-weight:600;margin-bottom:10px;color:var(--negro)}
 .pm-desc{font-size:13px;color:#555;line-height:1.5;margin-bottom:14px}
 
 /* SUGERIDOS */
 .sugg{margin-top:16px;padding-top:16px;border-top:1px dashed #ddd}
-.sugg-lbl{font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.3px;color:#666;margin-bottom:8px}
+.sugg-lbl{font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800;letter-spacing:.3px;color:#666;margin-bottom:8px}
 .sugg-row{display:flex;gap:8px;flex-wrap:wrap}
-.sugg-item{background:#f5f5f5;border:1px solid #e5e5e5;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;text-align:left;color:var(--negro);font-family:"Barlow",sans-serif}
-.sugg-item span{display:block;color:var(--rojo);font-weight:700;margin-top:2px;font-family:"Barlow Condensed",sans-serif}
+.sugg-item{background:#f5f5f5;border:1px solid #e5e5e5;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;text-align:left;color:var(--negro);font-family:"PT Sans",sans-serif}
+.sugg-item span{display:block;color:var(--rojo);font-weight:700;margin-top:2px;font-family:"PT Sans",sans-serif}
 </style>
 </head>
 <body>
@@ -579,12 +579,12 @@ const prods=[
 {id:"v18",cat:"vino",n:"Dona Paula Blue Edition",d:null,p:9200,pe:11040,tag:null,img:"images/productos/v18-dona-paula-blue.jpg"},
 {id:"v19",cat:"vino",n:"Los Cardos - Dona Paula Red Blend",d:null,p:7000,pe:8400,tag:null,img:"images/productos/v19-los-cardos.jpg"},
 {id:"v20",cat:"vino",n:"Trasamor Malbec",d:null,p:4300,pe:5160,tag:null,img:"images/productos/v20-trasamor.jpg"},
-{id:"v21",cat:"vino",n:"Santa Julia Rose",d:null,p:7000,pe:8400,tag:null},
+{id:"v21",cat:"vino",n:"Santa Julia Rose",d:null,p:7000,pe:8400,tag:null,img:"images/productos/v21-santa-julia-rose.jpg"},
 // ESPUMANTES
 {id:"e1",cat:"espumantes",n:"Chandon",d:null,p:21500,pe:25800,tag:null,v:["Aperitif","Extra Brut","Delice"],img:"images/productos/e1-chandon.jpg"},
-{id:"e2",cat:"espumantes",n:"Baron B",d:null,p:50000,pe:60000,tag:null,v:["Brut Nature","Brut Rose"]},
-{id:"e3",cat:"espumantes",n:"Baron B Extra Brut",d:null,p:40000,pe:48000,tag:null},
-{id:"e4",cat:"espumantes",n:"Sidra 1888",d:null,p:5500,pe:6600,tag:null},
+{id:"e2",cat:"espumantes",n:"Baron B",d:null,p:50000,pe:60000,tag:null,v:["Brut Nature","Brut Rose"],img:"images/productos/e2-baron-b.jpg"},
+{id:"e3",cat:"espumantes",n:"Baron B Extra Brut",d:null,p:40000,pe:48000,tag:null,img:"images/productos/e3-baron-b-extra-brut.jpg"},
+{id:"e4",cat:"espumantes",n:"Sidra 1888",d:null,p:5500,pe:6600,tag:null,img:"images/productos/e4-sidra-1888.jpg"},
 {id:"e5",cat:"espumantes",n:"Sidra La Victoria",d:null,p:3000,pe:3600,tag:null},
 // SIN ALCOHOL
 {id:"s1",cat:"sinalcohol",n:"Speed 250ml",d:null,p:2000,pe:2400,tag:null},
