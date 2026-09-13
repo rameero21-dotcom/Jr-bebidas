@@ -55,7 +55,11 @@ button:active{transform:scale(.94)}
 #catBody.cb-fade{opacity:0;transform:translateY(10px)}
 
 /* HERO */
-.hero{background-image:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.88) 100%),var(--hero-img,linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 55%,#1a0000 100%));background-size:cover;background-position:center;padding:54px 24px 40px;text-align:center;position:relative;overflow:hidden;transition:background-image .5s ease}
+.hero{background:#0a0a0a;padding:54px 24px 40px;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;opacity:0;transition:opacity 1.1s ease;z-index:0}
+.hero-bg.on{opacity:1}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.55) 45%,rgba(10,10,10,.88) 100%)}
+.hero-tag,.hero>h2,.hero>p,.hero-btn,.hero-tabs{position:relative;z-index:1}
 .hero-tag{font-size:11px;color:var(--naranja);font-weight:800;letter-spacing:2px;margin-bottom:8px}
 .hero h2{font-family:"Barlow Condensed",sans-serif;font-size:42px;font-weight:900;color:#fff;line-height:.95;margin-bottom:10px;letter-spacing:1px}
 .hero h2 span{color:var(--rojo)}
@@ -288,6 +292,8 @@ button:active{transform:scale(.94)}
 </header>
 
 <div class="hero" id="inicio">
+  <div class="hero-bg" id="heroBgA"></div>
+  <div class="hero-bg" id="heroBgB"></div>
   <div class="hero-tag">LO MAS PEDIDO</div>
   <h2 id="heroTitle">FERNET <span>BRANCA</span></h2>
   <p id="heroDesc">El clasico de siempre. Promos con hielo y gaseosa incluidos, listas para la previa.</p>
@@ -561,10 +567,10 @@ const prods=[
 {id:"v6",cat:"vino",n:"Perro Callejero",d:null,p:7700,pe:9250,tag:null,img:"images/productos/v6-perro-callejero.jpg"},
 {id:"v7",cat:"vino",n:"Alamos Malbec",d:null,p:7000,pe:8400,tag:null,img:"images/productos/v7-alamos-malbec.jpg"},
 {id:"v8",cat:"vino",n:"Fabre Montmayor Malbec",d:null,p:7800,pe:9360,tag:null,img:"images/productos/v8-fabre-montmayor.jpg"},
-{id:"v9",cat:"vino",n:"Portillo Malbec",d:null,p:6100,pe:7320,tag:null},
-{id:"v10",cat:"vino",n:"Patridge Malbec",d:null,p:6800,pe:8160,tag:null},
-{id:"v11",cat:"vino",n:"Cordero Piel de Lobo",d:null,p:7000,pe:8400,tag:null},
-{id:"v12",cat:"vino",n:"Esmeralda Malbec",d:null,p:6000,pe:7200,tag:null},
+{id:"v9",cat:"vino",n:"Portillo Malbec",d:null,p:6100,pe:7320,tag:null,img:"images/productos/v9-portillo-malbec.jpg"},
+{id:"v10",cat:"vino",n:"Patridge Malbec",d:null,p:6800,pe:8160,tag:null,img:"images/productos/v10-patridge-malbec.jpg"},
+{id:"v11",cat:"vino",n:"Cordero Piel de Lobo",d:null,p:7000,pe:8400,tag:null,img:"images/productos/v11-cordero-piel-lobo.jpg"},
+{id:"v12",cat:"vino",n:"Esmeralda Malbec",d:null,p:6000,pe:7200,tag:null,img:"images/productos/v12-esmeralda-malbec.jpg"},
 {id:"v13",cat:"vino",n:"Otro Loco Mas Malbec",d:null,p:4600,pe:5520,tag:null},
 {id:"v14",cat:"vino",n:"Santa Julia Dulce Tinto",d:null,p:7400,pe:8880,tag:null},
 {id:"v15",cat:"vino",n:"Santa Julia Malbec",d:null,p:8500,pe:10200,tag:null},
@@ -605,11 +611,17 @@ function renderHeroTabs(){
   const w = document.getElementById("heroTabs");
   w.innerHTML = heroItems.map((h,i)=>'<span class="hero-tab'+(i===heroIdx?" on":"")+'">'+h.n.replace(/<[^>]+>/g,"")+'</span>').join("");
 }
+let heroLayerOn = "A";
 function setHero(i){
   heroIdx = i;
   document.getElementById("heroTitle").innerHTML = heroItems[i].n;
   document.getElementById("heroDesc").textContent = heroItems[i].d;
-  document.getElementById("inicio").style.setProperty("--hero-img", "url('"+heroItems[i].img+"')");
+  var showEl = document.getElementById(heroLayerOn === "A" ? "heroBgB" : "heroBgA");
+  var hideEl = document.getElementById(heroLayerOn === "A" ? "heroBgA" : "heroBgB");
+  showEl.style.backgroundImage = "url('"+heroItems[i].img+"')";
+  showEl.classList.add("on");
+  hideEl.classList.remove("on");
+  heroLayerOn = heroLayerOn === "A" ? "B" : "A";
   renderHeroTabs();
 }
 function cicloHero(){
