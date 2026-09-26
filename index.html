@@ -345,6 +345,13 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
 .secblock{scroll-margin-top:calc(var(--hdr-h,90px) + 58px);margin-bottom:6px}
 .sec-h{font-family:"Domine",serif;font-size:20px;font-weight:700;margin:20px 0 12px;display:flex;align-items:baseline;gap:8px}
 .sec-h small{font-family:"PT Sans",sans-serif;font-size:11px;color:var(--sub);font-weight:400}
+.catgrid{grid-template-columns:repeat(4,minmax(0,124px))!important;gap:12px!important}
+@media(max-width:520px){
+  .catgrid{gap:8px!important}
+  .catcard b{font-size:10.5px!important}
+  .catcard small{font-size:9px!important}
+  .catcard.foto .cc-txt{padding:0 3px 7px!important}
+}
 </style>
 </head>
 <body>
