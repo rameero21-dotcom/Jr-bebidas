@@ -352,6 +352,20 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
   .catcard small{font-size:9px!important}
   .catcard.foto .cc-txt{padding:0 3px 7px!important}
 }
+.catitem{background:none;border:none;padding:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:9px;min-width:0;font-family:inherit}
+.catitem .catcard{display:block;width:100%;aspect-ratio:1/1;padding:0;box-shadow:0 2px 10px rgba(0,0,0,.10)}
+.catitem .catcard.foto{background-size:cover;background-position:center}
+.catitem .catcard.foto::after{display:none}
+.catitem:hover .catcard{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.2)}
+.catitem:active .catcard{transform:scale(.97)}
+.catitem .cc-txt{display:block;text-align:center;width:100%;padding:0}
+.catitem .cc-txt b{display:block;font-family:"Domine",serif;font-size:13px;font-weight:700;color:#111;line-height:1.2;text-shadow:none}
+.catitem .cc-txt small{display:block;font-family:"PT Sans",sans-serif;font-size:11px;color:#888;margin-top:2px}
+@media(max-width:520px){
+  .catgrid{row-gap:14px!important}
+  .catitem .cc-txt b{font-size:10.5px!important;color:#111!important}
+  .catitem .cc-txt small{font-size:9px!important;color:#888!important}
+}
 </style>
 </head>
 <body>
@@ -815,9 +829,9 @@ function renderCategorias(body){
   let html = '<div class="catgrid">';
   ordenCat.forEach(function(k){
     const bg = catImg[k] ? ' style="background-image:url(\''+catImg[k]+'\')"' : '';
-    html += '<button class="catcard reveal '+(catImg[k]?'foto ':'')+claseCat[k]+'"'+bg+' onclick="abrirCategoria(\''+k+'\')">'+
-      (catImg[k] ? '' : '<span class="cicon">'+iconCat[k]+'</span>')+
-      '<div class="cc-txt"><b>'+nomCat[k]+'</b><small>'+counts[k]+' productos</small></div>'+
+    html += '<button class="catitem reveal" onclick="abrirCategoria(\''+k+'\')">'+
+      '<span class="catcard '+(catImg[k]?'foto ':'')+claseCat[k]+'"'+bg+'>'+(catImg[k] ? '' : '<span class="cicon">'+iconCat[k]+'</span>')+'</span>'+
+      '<span class="cc-txt"><b>'+nomCat[k]+'</b><small>'+counts[k]+' productos</small></span>'+
       '</button>';
   });
   html += '</div>';
