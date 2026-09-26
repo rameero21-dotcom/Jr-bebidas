@@ -337,6 +337,14 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
 .hd-search{position:static!important;grid-column:1/-1;grid-row:2;box-shadow:none!important;border:none!important;padding:2px 4px 4px!important}
 .hd-search input{font-size:14px!important;padding:7px 2px!important;border-bottom:1px solid #d5d5d5!important}
 .hd-search input:focus{border-bottom-color:#111!important}
+.secs{margin-top:6px}
+.chipbar{position:sticky;top:var(--hdr-h,90px);z-index:60;background:#fff;display:flex;gap:8px;overflow-x:auto;margin:0 -16px 12px;padding:9px 16px;border-bottom:1px solid #eee;scrollbar-width:none}
+.chipbar::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid #ddd;background:#fff;color:#444;font-family:"PT Sans",sans-serif;font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:20px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.chip.on{background:#0a0a0a;border-color:#0a0a0a;color:#fff}
+.secblock{scroll-margin-top:calc(var(--hdr-h,90px) + 58px);margin-bottom:6px}
+.sec-h{font-family:"Domine",serif;font-size:20px;font-weight:700;margin:20px 0 12px;display:flex;align-items:baseline;gap:8px}
+.sec-h small{font-family:"PT Sans",sans-serif;font-size:11px;color:var(--sub);font-weight:400}
 </style>
 </head>
 <body>
@@ -773,10 +781,8 @@ function renderCatBodyNow(){
   const body = document.getElementById("catBody");
   if (busqueda.trim().length > 0) {
     renderBusqueda(body);
-  } else if (!catActiva) {
-    renderCategorias(body);
   } else {
-    renderProductos(body, catActiva);
+    renderCatalogo(body);
   }
   observeReveals();
 }
@@ -826,17 +832,67 @@ function ordbarHtml(){
 }
 
 function setOrden(o){
+  var y = window.scrollY;
   orden = o;
   renderCatBody();
+  setTimeout(function(){ window.scrollTo(0, y); }, 240);
 }
 
-function abrirCategoria(k){
-  catActiva = k;
-  document.getElementById("buscador").value = "";
-  busqueda = "";
-  renderCatBody();
-  document.getElementById("catalogo").scrollIntoView({behavior:"smooth",block:"start"});
+var hdrH = 90, lastAct = null, scrollAntes = null;
+function medirHdr(){
+  var h = document.querySelector("header");
+  if (!h) return;
+  hdrH = h.offsetHeight;
+  document.documentElement.style.setProperty("--hdr-h", hdrH + "px");
 }
+function renderCatalogo(body){
+  renderCategorias(body);
+  var chips = ordenCat.map(function(k){
+    return "<button class=\"chip\" data-k=\""+k+"\" onclick=\"irASeccion(\x27"+k+"\x27)\">"+nomCat[k]+"</button>";
+  }).join("");
+  var secs = ordenCat.map(function(k){
+    var ps = ordenarProds(prods.filter(function(p){ return p.cat===k; }));
+    return "<div class=\"secblock\" id=\"sec_"+k+"\"><div class=\"sec-h\">"+nomCat[k]+"<small>"+ps.length+" productos</small></div><div class=\"grid\">"+ps.map(cardHtml).join("")+"</div></div>";
+  }).join("");
+  body.innerHTML += "<div class=\"secs\"><div class=\"chipbar\" id=\"chipbar\">"+chips+"</div>"+ordbarHtml()+secs+"</div>";
+  lastAct = null;
+  medirHdr();
+  actualizarChipActivo();
+}
+function actualizarChipActivo(){
+  var bar = document.getElementById("chipbar");
+  if (!bar) return;
+  var off = hdrH + bar.offsetHeight + 30, act = null;
+  ordenCat.forEach(function(k){
+    var s = document.getElementById("sec_"+k);
+    if (s && s.getBoundingClientRect().top <= off) act = k;
+  });
+  if (act === lastAct) return;
+  lastAct = act;
+  bar.querySelectorAll(".chip").forEach(function(c){
+    var on = c.getAttribute("data-k") === act;
+    c.classList.toggle("on", on);
+    if (on) bar.scrollTo({left: Math.max(0, c.offsetLeft - 24), behavior: "smooth"});
+  });
+}
+var scrollTick = false;
+window.addEventListener("scroll", function(){
+  if (scrollTick) return;
+  scrollTick = true;
+  requestAnimationFrame(function(){ scrollTick = false; actualizarChipActivo(); });
+}, {passive:true});
+window.addEventListener("resize", medirHdr);
+
+function irASeccion(k){
+  if (busqueda.trim().length > 0) {
+    busqueda = "";
+    document.getElementById("buscador").value = "";
+    renderCatBodyNow();
+  }
+  var el = document.getElementById("sec_"+k);
+  if (el) el.scrollIntoView({behavior:"smooth", block:"start"});
+}
+function abrirCategoria(k){ irASeccion(k); }
 
 function volverCategorias(){
   catActiva = null;
@@ -918,13 +974,22 @@ function toggleSearch(){
   if (s.classList.contains("open")) document.getElementById("buscador").focus();
 }
 function buscar(v){
+  var habia = busqueda.trim().length > 0, hay = v.trim().length > 0;
+  if (!habia && hay) scrollAntes = window.scrollY;
   busqueda = v;
   renderCatBody();
+  if (habia && !hay) restaurarScroll();
 }
 function limpiarBusqueda(){
   busqueda = "";
   document.getElementById("buscador").value = "";
   renderCatBody();
+  restaurarScroll();
+}
+function restaurarScroll(){
+  if (scrollAntes === null) return;
+  var y = scrollAntes; scrollAntes = null;
+  setTimeout(function(){ window.scrollTo(0, y); }, 260);
 }
 
 function agregar(id) {
