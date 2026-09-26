@@ -366,6 +366,10 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
   .catitem .cc-txt b{font-size:10.5px!important;color:#111!important}
   .catitem .cc-txt small{font-size:9px!important;color:#888!important}
 }
+.pimg-foto{aspect-ratio:1/1;height:auto!important;background:#e4e4e4!important}
+.pimg-foto img{width:100%;height:100%;object-fit:cover;mix-blend-mode:normal!important;filter:none!important}
+.pm-foto{height:auto!important;aspect-ratio:1/1;max-height:320px;background:#e4e4e4!important}
+.pm-foto img{object-fit:cover!important;padding:0!important}
 </style>
 </head>
 <body>
@@ -651,12 +655,12 @@ const prods=[
 {id:"c9",cat:"cerveza",n:"Heineken x6 473ml",d:null,p:19800,pe:23760,tag:null,img:"images/productos/c9-heineken-x6.jpg"},
 {id:"c10",cat:"cerveza",n:"Grolsch x6 473ml",d:null,p:19800,pe:23760,tag:null,img:"images/productos/c10-grolsch-x6.jpg"},
 {id:"c11",cat:"cerveza",n:"Corona 710ml",d:null,p:6000,pe:7200,tag:null,img:"images/productos/c11-corona-710.jpg"},
-{id:"c12",cat:"cerveza",n:"Corona 330ml x6",d:null,p:18000,pe:21600,tag:null,img:"images/productos/c12-corona-330-x6.jpg"},
+{id:"c12",cat:"cerveza",n:"Corona 330ml x6",d:null,p:18000,pe:21600,tag:null,img:"images/productos/c11-corona-710.jpg"},
 {id:"c13",cat:"cerveza",n:"1890 x6 473ml",d:null,p:10200,pe:12240,tag:"super",img:"images/productos/c13-1890-x6.jpg"},
 // APERITIVOS
-{id:"ap1",cat:"aperitivos",n:"Fernet Branca 1lt",d:null,p:25500,pe:30600,tag:null,img:"images/productos/ap1-fernet-branca-1l.jpg"},
+{id:"ap1",cat:"aperitivos",n:"Fernet Branca 1lt",d:null,p:25500,pe:30600,tag:null,img:"images/productos/ap2-fernet-branca-750.jpg"},
 {id:"ap2",cat:"aperitivos",n:"Fernet Branca 750ml",d:null,p:19000,pe:22800,tag:null,img:"images/productos/ap2-fernet-branca-750.jpg"},
-{id:"ap3",cat:"aperitivos",n:"Fernet Branca 450ml",d:null,p:13000,pe:15600,tag:null,img:"images/productos/ap3-fernet-branca-450.jpg"},
+{id:"ap3",cat:"aperitivos",n:"Fernet Branca 450ml",d:null,p:13000,pe:15600,tag:null,img:"images/productos/ap2-fernet-branca-750.jpg"},
 {id:"ap4",cat:"aperitivos",n:"Campari 750ml",d:null,p:12500,pe:15000,tag:null,img:"images/productos/ap4-campari.jpg"},
 {id:"ap5",cat:"aperitivos",n:"Cinzano Rosso y Bianco",d:null,p:9500,pe:11400,tag:null,img:"images/productos/ap5-cinzano.jpg"},
 {id:"ap6",cat:"aperitivos",n:"Gancia 950ml",d:null,p:10500,pe:12600,tag:null,img:"images/productos/ap6-gancia.jpg"},
@@ -679,7 +683,7 @@ const prods=[
 {id:"w11",cat:"whisky",n:"Chivas XV",d:null,p:120000,pe:144000,tag:null,img:"images/productos/w11-chivas-xv.jpg"},
 {id:"w12",cat:"whisky",n:"Chivas 21 anos Royal Salute",d:null,p:410000,pe:492000,tag:null,img:"images/productos/w12-royal-salute-21.jpg"},
 {id:"w13",cat:"whisky",n:"Johnnie Walker Red Label 750ml",d:null,p:38000,pe:45600,tag:null,img:"images/productos/w13-johnnie-walker-red-750.jpg"},
-{id:"w14",cat:"whisky",n:"Johnnie Walker Red Label 1L",d:null,p:44500,pe:53400,tag:null,img:"images/productos/w14-jw-red-1l.jpg"},
+{id:"w14",cat:"whisky",n:"Johnnie Walker Red Label 1L",d:null,p:44500,pe:53400,tag:null,img:"images/productos/w13-johnnie-walker-red-750.jpg"},
 {id:"w15",cat:"whisky",n:"Johnnie Walker Black Label 750ml",d:null,p:58300,pe:69960,tag:null,img:"images/productos/w15-jw-black-750.jpg"},
 {id:"w16",cat:"whisky",n:"Johnnie Walker Double Black",d:null,p:67000,pe:80400,tag:null,img:"images/productos/w16-jw-double-black.jpg"},
 {id:"w17",cat:"whisky",n:"Jim Beam Extra Aged Black",d:null,p:72600,pe:87200,tag:null,img:"images/productos/w17-jim-beam-extra-aged.jpg"},
@@ -707,7 +711,7 @@ const prods=[
 {id:"bb13",cat:"blancas",n:"Malevo",d:null,p:12500,pe:15000,tag:null,img:"images/productos/bb13-malevo.jpg"},
 {id:"bb14",cat:"blancas",n:"Beefeater Orange 750ml",d:null,p:37000,pe:44400,tag:null,img:"images/productos/bb14-beefeater-orange.jpg"},
 {id:"bb15",cat:"blancas",n:"Beefeater Clasico 1Lt",d:null,p:37000,pe:44400,tag:null,img:"images/productos/bb15-beefeater-clasico-1l.jpg"},
-{id:"bb16",cat:"blancas",n:"Beefeater Clasico 750ml",d:null,p:31500,pe:37800,tag:null,img:"images/productos/bb16-beefeater-clasico-750.jpg"},
+{id:"bb16",cat:"blancas",n:"Beefeater Clasico 750ml",d:null,p:31500,pe:37800,tag:null,img:"images/productos/bb15-beefeater-clasico-1l.jpg"},
 {id:"bb17",cat:"blancas",n:"Bombay",d:null,p:37500,pe:45000,tag:null,img:"images/productos/bb17-bombay.jpg"},
 {id:"bb18",cat:"blancas",n:"Tanqueray",d:null,p:32600,pe:39150,tag:null,img:"images/productos/bb18-tanqueray.jpg"},
 {id:"bb19",cat:"blancas",n:"Malaria Black",d:null,p:39600,pe:47550,tag:null,img:"images/productos/bb19-malaria-black.jpg"},
