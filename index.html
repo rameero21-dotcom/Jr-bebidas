@@ -114,6 +114,9 @@ button:active{transform:scale(.94)}
 .catcard b{position:relative;z-index:1;font-family:"Domine",serif;font-size:12px;font-weight:700;line-height:1.15;display:block}
 .catcard small{position:relative;z-index:1;font-size:10px;color:rgba(255,255,255,.75);display:block;margin-top:2px}
 .catcard-cta{display:none}
+.catcard.foto{background-size:cover;background-position:center;justify-content:flex-end;padding:0}
+.catcard.foto::after{background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.82) 100%)}
+.catcard.foto .cc-txt{position:relative;z-index:1;width:100%;padding:0 6px 9px}
 
 .backbtn{background:none;border:none;color:var(--rojo);font-family:"PT Sans",sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;letter-spacing:.3px;margin-bottom:10px;padding:0}
 
@@ -289,6 +292,20 @@ button:active{transform:scale(.94)}
 .sugg-row{display:flex;gap:8px;flex-wrap:wrap}
 .sugg-item{background:#f5f5f5;border:1px solid #e5e5e5;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;text-align:left;color:var(--negro);font-family:"PT Sans",sans-serif}
 .sugg-item span{display:block;color:var(--rojo);font-weight:700;margin-top:2px;font-family:"PT Sans",sans-serif}
+.cartbar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--negro);color:#fff;border:none;border-top:2px solid var(--rojo);padding:13px 18px calc(13px + env(safe-area-inset-bottom));font-family:"PT Sans",sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-align:left;box-shadow:0 -6px 22px rgba(0,0,0,.22)}
+.cb-l{display:flex;align-items:center;gap:10px;min-width:0}
+.cb-r{display:flex;align-items:center;gap:14px;flex:none}
+#cbTot{font-variant-numeric:tabular-nums;font-size:16px}
+.cb-go{background:var(--naranja);color:#1a0d00;padding:7px 14px;border-radius:6px;font-weight:800;font-size:12.5px;letter-spacing:.3px}
+.cartbar:not(.has) .cb-go{background:transparent;color:#bbb;border:1px solid #555}
+body{padding-bottom:64px}
+.wa-float{bottom:78px!important}
+.toast{position:fixed;left:50%;bottom:76px;z-index:95;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#166534;color:#fff;font-size:13px;font-weight:700;padding:10px 16px;border-radius:24px;box-shadow:0 8px 22px rgba(0,0,0,.3);max-width:88vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .25s ease,transform .25s cubic-bezier(.22,.61,.36,1)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){.toast{transition:none}}
+.pimg-foto{background:radial-gradient(circle at 50% 38%,#fbfbfb,#ebebeb);height:170px;overflow:hidden}
+.pimg-foto img{mix-blend-mode:multiply;filter:brightness(1.07) contrast(1.03);transition:transform .45s cubic-bezier(.22,.61,.36,1)}
+.card:hover .pimg-foto img{transform:scale(1.06)}
 </style>
 </head>
 <body>
@@ -323,7 +340,7 @@ button:active{transform:scale(.94)}
       <input type="text" id="buscador" placeholder="Buscar producto..." oninput="buscar(this.value)">
       <button tabindex="-1">&#128269;</button>
     </div>
-    <button class="cart-btn" onclick="abrirCarrito()">PEDIDO <span class="cart-n" id="cn">0</span></button>
+
   </div>
 </header>
 
@@ -436,6 +453,8 @@ button:active{transform:scale(.94)}
   <div class="flegal">Consumo responsable &middot; Venta exclusiva para mayores de 18 a&ntilde;os</div>
 </div>
 
+<button class="cartbar" id="cartbar" onclick="abrirCarrito()" aria-label="Ver pedido"><span class="cb-l"><span class="cart-n" id="cn">0</span><span id="cbTxt">Tu pedido est&aacute; vac&iacute;o</span></span><span class="cb-r"><span id="cbTot"></span><span class="cb-go">Ver pedido &rsaquo;</span></span></button>
+<div class="toast" id="toast" role="status"></div>
 <a class="wa-float" href="https://wa.me/5492216138637" target="_blank">&#128172; Escribinos</a>
 
 <div class="overlay" id="pmOv" onclick="cerrarSiClickPM(event)">
@@ -754,9 +773,10 @@ function renderCategorias(body){
   const counts = catCounts();
   let html = '<div class="catgrid">';
   ordenCat.forEach(function(k){
-    html += '<button class="catcard reveal '+claseCat[k]+'" onclick="abrirCategoria(\''+k+'\')">'+
-      '<span class="cicon">'+iconCat[k]+'</span>'+
-      '<div><b>'+nomCat[k]+'</b><small>'+counts[k]+' productos</small></div>'+
+    const bg = catImg[k] ? ' style="background-image:url(\''+catImg[k]+'\')"' : '';
+    html += '<button class="catcard reveal '+(catImg[k]?'foto ':'')+claseCat[k]+'"'+bg+' onclick="abrirCategoria(\''+k+'\')">'+
+      (catImg[k] ? '' : '<span class="cicon">'+iconCat[k]+'</span>')+
+      '<div class="cc-txt"><b>'+nomCat[k]+'</b><small>'+counts[k]+' productos</small></div>'+
       '</button>';
   });
   html += '</div>';
@@ -886,6 +906,24 @@ function agregar(id) {
   qtySel[id] = 1;
   actuBadge();
   actuBtn(id);
+  showToast("Agregado: " + (cant > 1 ? cant + " x " : "") + nombre);
+}
+
+var toastT = null;
+function showToast(msg){
+  var el = document.getElementById("toast");
+  el.textContent = "✓ " + msg;
+  el.classList.add("show");
+  clearTimeout(toastT);
+  toastT = setTimeout(function(){ el.classList.remove("show"); }, 1800);
+}
+function updateBar(){
+  var tot = 0;
+  for (var k in carrito) tot += carrito[k].qty;
+  var bar = document.getElementById("cartbar");
+  bar.classList.toggle("has", tot > 0);
+  document.getElementById("cbTxt").textContent = tot > 0 ? (tot + (tot === 1 ? " producto" : " productos")) : "Tu pedido está vacío";
+  document.getElementById("cbTot").textContent = tot > 0 ? fmt(calcTotal()) : "";
 }
 
 function actuBtn(id) {
@@ -908,6 +946,7 @@ function actuBadge() {
   n.classList.remove("bump");
   void n.offsetWidth;
   n.classList.add("bump");
+  updateBar();
 }
 
 /* ---------- FICHA DE PRODUCTO ---------- */
@@ -1142,6 +1181,7 @@ function confirmarEdad(si){
   setHero(0);
   cicloHero();
   renderCatBody();
+  updateBar();
 })();
 </script>
 
