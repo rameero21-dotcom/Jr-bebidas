@@ -1299,9 +1299,8 @@ function confirmarEdad(si){
 
 /* ---------- INIT ---------- */
 (function init(){
-  var okEdad = false;
-  try { okEdad = localStorage.getItem("jrb_edad_ok") === "1"; } catch(e){}
-  if (okEdad) document.getElementById("agegate").hidden = true;
+  /* cartel de mayoria de edad desactivado */
+  document.getElementById("agegate").hidden = true;
   setHero(0);
   cicloHero();
   renderCatBody();
