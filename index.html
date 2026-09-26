@@ -97,26 +97,23 @@ button:active{transform:scale(.94)}
 .cat-h{font-family:"Domine",serif;font-size:24px;font-weight:700;text-align:center;margin:6px 0 6px}
 .cat-sub{font-size:13px;color:#666;text-align:center;max-width:480px;margin:0 auto 20px;line-height:1.5}
 
-.catgrid{display:flex;flex-direction:column;gap:12px;padding:0 0 20px}
+.catgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,124px));justify-content:center;gap:12px;padding:6px 0 24px;max-width:760px;margin:0 auto}
+@media(max-width:400px){.catgrid{grid-template-columns:repeat(3,1fr);gap:9px}}
 .catcard{
-  background:linear-gradient(135deg,#242424,#0a0a0a) center/cover no-repeat;border:none;border-radius:12px;padding:22px 20px;color:#fff;cursor:pointer;
-  text-align:left;position:relative;overflow:hidden;min-height:104px;width:100%;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  aspect-ratio:1/1;width:100%;border:none;border-radius:14px;padding:10px 6px;color:#fff;cursor:pointer;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.14);
   transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease;
 }
-.catcard::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(0,0,0,.25),rgba(0,0,0,.72))}
-.catcard:hover{transform:translateY(-5px) scale(1.015);box-shadow:0 14px 30px rgba(0,0,0,.28)}
-.catcard:active{transform:scale(.98)}
-.catcard-txt{position:relative;display:flex;align-items:center;gap:14px}
-.catcard .cicon{position:relative;flex:none;width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center}
-.catcard .cicon svg{width:24px;height:24px;display:block}
-.catcard b{font-family:"Domine",serif;font-size:18px;font-weight:700;letter-spacing:0;display:block}
-.catcard small{font-size:11.5px;color:#eee;margin-top:2px;display:block}
-.catcard-cta{
-  position:relative;flex:none;background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;font-family:"PT Sans",sans-serif;
-  font-weight:700;font-size:11.5px;letter-spacing:.4px;padding:7px 13px;border-radius:2px;white-space:nowrap;
-}
-@media(max-width:520px){.catcard-cta{display:none}}
+.catcard::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(0,0,0,.35));pointer-events:none}
+.catcard:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.26)}
+.catcard:active{transform:scale(.97)}
+.catcard .cicon{position:relative;z-index:1;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center}
+.catcard .cicon svg{width:22px;height:22px;display:block}
+.catcard b{position:relative;z-index:1;font-family:"Domine",serif;font-size:12px;font-weight:700;line-height:1.15;display:block}
+.catcard small{position:relative;z-index:1;font-size:10px;color:rgba(255,255,255,.75);display:block;margin-top:2px}
+.catcard-cta{display:none}
 
 .backbtn{background:none;border:none;color:var(--rojo);font-family:"PT Sans",sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;letter-spacing:.3px;margin-bottom:10px;padding:0}
 
@@ -757,11 +754,9 @@ function renderCategorias(body){
   const counts = catCounts();
   let html = '<div class="catgrid">';
   ordenCat.forEach(function(k){
-    const bgStyle = catImg[k] ? ' style="background-image:url(\''+catImg[k]+'\')"' : '';
-    const icon = catImg[k] ? '' : '<span class="cicon">'+iconCat[k]+'</span>';
-    html += '<button class="catcard reveal '+(catImg[k]?'':claseCat[k])+'"'+bgStyle+' onclick="abrirCategoria(\''+k+'\')">'+
-      '<div class="catcard-txt">'+icon+'<div><b>'+nomCat[k]+'</b><small>'+counts[k]+' productos</small></div></div>'+
-      '<span class="catcard-cta">Ver productos</span>'+
+    html += '<button class="catcard reveal '+claseCat[k]+'" onclick="abrirCategoria(\''+k+'\')">'+
+      '<span class="cicon">'+iconCat[k]+'</span>'+
+      '<div><b>'+nomCat[k]+'</b><small>'+counts[k]+' productos</small></div>'+
       '</button>';
   });
   html += '</div>';
