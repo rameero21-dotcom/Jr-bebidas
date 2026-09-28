@@ -1,0 +1,10 @@
+{
+  "name": "functions",
+  "description": "Cloud Function de Jr Bebidas: genera el link de pago de Mercado Pago para el carrito de la web.",
+  "private": true,
+  "engines": { "node": "20" },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-functions": "^6.4.0"
+  }
+}

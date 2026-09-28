@@ -255,6 +255,12 @@ button:active{transform:scale(.94)}
 .mp-copy{background:#fff;color:#009EE3;border:none;padding:7px 18px;border-radius:6px;font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800;cursor:pointer}
 .mp-copy.copied{background:#166534;color:#fff}
 .mp-nota{font-size:10.5px;color:#fff;opacity:.9;margin-top:10px;line-height:1.4}
+.mp-pay-btn{width:100%;background:#fff;color:#009EE3;border:none;padding:14px;border-radius:8px;font-family:"PT Sans",sans-serif;font-size:15px;font-weight:900;cursor:pointer;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
+.mp-pay-btn:disabled{opacity:.7;cursor:not-allowed}
+.mp-pay-err{display:none;color:#fff;background:rgba(0,0,0,.2);border-radius:6px;padding:8px;margin-top:8px;font-size:11.5px;line-height:1.4}
+.mp-pay-err.show{display:block}
+.mp-sep{display:flex;align-items:center;gap:10px;color:#fff;opacity:.85;font-size:10.5px;letter-spacing:.3px;margin:12px 0}
+.mp-sep:before,.mp-sep:after{content:"";flex:1;height:1px;background:rgba(255,255,255,.4)}
 .confirm-box{display:none;align-items:center;gap:8px;background:#f5f5f5;border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin-bottom:16px}
 .confirm-box.show{display:flex}
 .confirm-box input[type=checkbox]{width:20px;height:20px;accent-color:var(--rojo);flex-shrink:0}
@@ -566,6 +572,11 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
         </label>
       </div>
       <div class="mp-box" id="mpBox">
+        <button class="mp-pay-btn" id="mpPayBtn" onclick="pagarConMercadoPago()">
+          <span id="mpPayBtnTxt">Pagar ahora con Mercado Pago</span>
+        </button>
+        <div class="mp-pay-err" id="mpPayErr"></div>
+        <div class="mp-sep"><span>o transferi manualmente</span></div>
         <div class="mp-label">TRANSFERI A ESTE ALIAS</div>
         <div class="mp-alias" id="mpAlias">Ramiro.dlz</div>
         <button class="mp-copy" id="mpCopyBtn" onclick="copiarAlias()">Copiar alias</button>
@@ -1188,6 +1199,50 @@ function toggleEnviarBtn() {
 
 function precioUnit(k){
   return pago === "transferencia" ? (buscarProd(k) ? buscarProd(k).pe : carrito[k].p) : carrito[k].p;
+}
+
+var MP_FUNCTION_URL = "https://southamerica-east1-jr-bebidas-pos.cloudfunctions.net/crearPreferenciaMercadoPago";
+
+function pagarConMercadoPago(){
+  var keys = Object.keys(carrito).filter(function(k){ return carrito[k].qty > 0; });
+  if (!keys.length) return;
+
+  var items = keys.map(function(k){
+    return {
+      title: carrito[k].n,
+      quantity: carrito[k].qty,
+      unit_price: precioUnit(k)
+    };
+  });
+
+  var btn = document.getElementById("mpPayBtn");
+  var btnTxt = document.getElementById("mpPayBtnTxt");
+  var err = document.getElementById("mpPayErr");
+  err.classList.remove("show");
+  btn.disabled = true;
+  btnTxt.textContent = "Generando link de pago...";
+
+  fetch(MP_FUNCTION_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      items: items,
+      payerName: (document.getElementById("inp_n") || {}).value || ""
+    })
+  })
+    .then(function(r){ return r.json().then(function(data){ return { ok: r.ok, data: data }; }); })
+    .then(function(res){
+      if (!res.ok || !res.data.init_point) {
+        throw new Error(res.data && res.data.error ? res.data.error : "No se pudo generar el link de pago");
+      }
+      window.location.href = res.data.init_point;
+    })
+    .catch(function(e){
+      btn.disabled = false;
+      btnTxt.textContent = "Pagar ahora con Mercado Pago";
+      err.textContent = "No pudimos conectar con Mercado Pago (" + e.message + "). Proba de nuevo o transferi manualmente abajo.";
+      err.classList.add("show");
+    });
 }
 function buscarProd(id){
   for (var i=0;i<prods.length;i++) if (prods[i].id===id) return prods[i];

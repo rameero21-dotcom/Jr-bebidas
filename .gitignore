@@ -1,0 +1,7 @@
+node_modules/
+mp-secret.bat
+firebase-debug.log
+functions/node_modules/
+/package.json
+/package-lock.json
+functions/package-lock.json
