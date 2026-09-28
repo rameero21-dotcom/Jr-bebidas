@@ -238,38 +238,41 @@ button:active{transform:scale(.94)}
 .qn{font-weight:700;font-size:14px;min-width:20px;text-align:center}
 .vacio{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
 .form{margin-top:20px}
-.lbl{font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800;color:#666;letter-spacing:.5px;margin-bottom:6px;display:block}
-.inp{width:100%;background:#f5f5f5;border:1px solid #ddd;color:var(--negro);padding:11px 14px;border-radius:8px;font-size:15px;font-family:"PT Sans",sans-serif;margin-bottom:14px;outline:none}
+.sect-h{font-family:"Domine",serif;font-size:15px;font-weight:700;color:var(--negro);border-left:3px solid var(--rojo);padding-left:10px;margin:20px 0 12px}
+.sect-h:first-child{margin-top:0}
+.lbl{font-family:"PT Sans",sans-serif;font-size:10.5px;font-weight:800;color:#888;letter-spacing:.5px;margin-bottom:6px;display:block}
+.inp{width:100%;background:#f5f5f5;border:1px solid #ececec;color:var(--negro);padding:12px 14px;border-radius:8px;font-size:14px;font-family:"PT Sans",sans-serif;margin-bottom:16px;outline:none}
 .inp:focus{border-color:var(--rojo)}
-.entrega{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.pagos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-.po{background:#f5f5f5;border:2px solid #ddd;border-radius:8px;padding:12px;cursor:pointer;text-align:center}
-.po.on{border-color:var(--rojo);background:#fff0f0}
-.po input{display:none}
-.pi{font-size:22px;margin-bottom:4px}
-.pn{font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800}
-.mp-box{display:none;background:#009EE3;border-radius:8px;padding:14px;margin-bottom:16px;text-align:center}
-.mp-box.show{display:block}
-.mp-label{font-family:"PT Sans",sans-serif;font-size:11px;color:#fff;opacity:.9;letter-spacing:.5px;margin-bottom:6px}
-.mp-alias{font-family:"Domine",serif;font-size:19px;font-weight:700;color:#fff;letter-spacing:0;margin-bottom:10px}
-.mp-copy{background:#fff;color:#009EE3;border:none;padding:7px 18px;border-radius:6px;font-family:"PT Sans",sans-serif;font-size:13px;font-weight:800;cursor:pointer}
-.mp-copy.copied{background:#166534;color:#fff}
-.mp-nota{font-size:10.5px;color:#fff;opacity:.9;margin-top:10px;line-height:1.4}
-.mp-pay-btn{width:100%;background:#fff;color:#009EE3;border:none;padding:14px;border-radius:8px;font-family:"PT Sans",sans-serif;font-size:15px;font-weight:900;cursor:pointer;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
-.mp-pay-btn:disabled{opacity:.7;cursor:not-allowed}
-.mp-pay-err{display:none;color:#fff;background:rgba(0,0,0,.2);border-radius:6px;padding:8px;margin-top:8px;font-size:11.5px;line-height:1.4}
+.seg{display:flex;background:#f2f2f2;border-radius:10px;padding:4px;gap:4px;margin-bottom:14px}
+.seg-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 6px;border-radius:8px;font-family:"PT Sans",sans-serif;font-weight:700;font-size:12.5px;border:none;cursor:pointer;background:transparent;color:#666;transition:background .15s ease,color .15s ease}
+.seg-btn svg{flex:none}
+.seg-btn.on{background:var(--negro);color:#fff}
+.mp-promo{background:linear-gradient(135deg,#00b8f2,#009EE3);border-radius:12px;padding:16px;color:#fff;margin-bottom:10px}
+.mp-promo-h{display:flex;align-items:center;gap:9px;margin-bottom:6px;font-family:"Domine",serif;font-weight:700;font-size:14.5px}
+.mp-promo p{font-size:12px;opacity:.92;line-height:1.45;margin:0}
+.mp-link{background:none;border:none;color:#999;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;cursor:pointer;padding:0;margin-bottom:14px;font-family:"PT Sans",sans-serif}
+.mp-link.back{color:var(--rojo)}
+.mp-manual-box{background:#f5f5f5;border-radius:10px;padding:14px;margin-bottom:12px}
+.mp-manual-lbl{font-size:10.5px;font-weight:800;letter-spacing:.5px;color:#888;margin-bottom:5px}
+.mp-manual-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mp-alias{font-family:"Domine",serif;font-size:17px;font-weight:700;color:var(--negro)}
+.mp-copy{background:var(--negro);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-family:"PT Sans",sans-serif;font-size:11.5px;font-weight:800;cursor:pointer;flex:none}
+.mp-copy.copied{background:#166534}
+.efectivo-note{background:#f5f5f5;border-radius:10px;padding:14px;display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.efectivo-note p{font-size:12.5px;color:#333;line-height:1.45;margin:0}
+.mp-pay-err{display:none;color:var(--rojo-osc);background:#fff0f0;border-radius:6px;padding:8px 10px;margin-top:8px;font-size:11.5px;line-height:1.4}
 .mp-pay-err.show{display:block}
-.mp-sep{display:flex;align-items:center;gap:10px;color:#fff;opacity:.85;font-size:10.5px;letter-spacing:.3px;margin:12px 0}
-.mp-sep:before,.mp-sep:after{content:"";flex:1;height:1px;background:rgba(255,255,255,.4)}
-.confirm-box{display:none;align-items:center;gap:8px;background:#f5f5f5;border:1px solid #ddd;border-radius:8px;padding:12px 14px;margin-bottom:16px}
+.confirm-box{display:none;align-items:flex-start;gap:9px;margin-bottom:14px;font-size:12.5px;color:#333;line-height:1.4}
 .confirm-box.show{display:flex}
-.confirm-box input[type=checkbox]{width:20px;height:20px;accent-color:var(--rojo);flex-shrink:0}
-.confirm-box label{font-size:12.5px;color:var(--negro);line-height:1.4}
-.tbar{display:flex;justify-content:space-between;align-items:center;background:#f5f5f5;border-radius:8px;padding:14px;margin-bottom:16px}
-.tlbl{font-family:"PT Sans",sans-serif;font-size:15px;font-weight:800;color:#666}
-.tval{font-family:"Domine",serif;font-size:24px;font-weight:700;color:var(--rojo);font-variant-numeric:tabular-nums}
-.sbtn{width:100%;background:var(--verde);border:none;color:#fff;padding:15px;border-radius:8px;font-family:"PT Sans",sans-serif;font-size:17px;font-weight:900;cursor:pointer;letter-spacing:1px}
-.sbtn:hover{background:#1eb954;transform:scale(1.03);box-shadow:0 6px 16px rgba(0,0,0,.22)}
+.confirm-box input[type=checkbox]{width:16px;height:16px;accent-color:var(--rojo);flex-shrink:0;margin-top:2px}
+.tbar{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 12px}
+.tlbl{font-family:"PT Sans",sans-serif;font-size:12px;font-weight:800;color:#888;letter-spacing:.5px}
+.tval{font-family:"Domine",serif;font-size:22px;font-weight:700;color:var(--rojo);font-variant-numeric:tabular-nums}
+.mp-pay-btn{width:100%;background:#009EE3;color:#fff;border:none;padding:14px;border-radius:9px;font-family:"PT Sans",sans-serif;font-size:14.5px;font-weight:900;cursor:pointer;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
+.mp-pay-btn:disabled{opacity:.6;cursor:not-allowed}
+.mp-pay-btn:not(:disabled):hover{background:#00b0f0}
+.sbtn{width:100%;background:var(--verde);border:none;color:#fff;padding:14px;border-radius:9px;font-family:"PT Sans",sans-serif;font-size:14.5px;font-weight:900;cursor:pointer;letter-spacing:.3px}
+.sbtn:hover{background:#1eb954}
 .sbtn:disabled{background:#ccc;cursor:not-allowed}
 
 /* WHATSAPP FLOTANTE */
@@ -538,59 +541,91 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
     </div>
     <div id="cc"></div>
     <div class="form" id="frm" style="display:none">
-      <label class="lbl">TU NOMBRE</label>
+      <div class="sect-h">Tus datos</div>
+      <label class="lbl">NOMBRE</label>
       <input class="inp" id="inp_n" type="text" placeholder="&iquest;C&oacute;mo te llamas?">
 
-      <label class="lbl">COMO LO QUERES RECIBIR</label>
-      <div class="entrega">
-        <label class="po on" id="pd" onclick="selEntrega('domicilio')">
-          <input type="radio" name="entrega" checked>
-          <div class="pi">&#128666;</div><div class="pn">Envio a domicilio</div>
-        </label>
-        <label class="po" id="pr" onclick="selEntrega('retiro')">
-          <input type="radio" name="entrega">
-          <div class="pi">&#127970;</div><div class="pn">Retiro en local</div>
-        </label>
+      <div class="sect-h">Entrega</div>
+      <div class="seg">
+        <button type="button" class="seg-btn on" id="pd" onclick="selEntrega('domicilio')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h1V6a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v11h1"/><path d="M15 10h3.28a1 1 0 0 1 .9.56l1.72 3.44H21v3h-1"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+          Envio a domicilio
+        </button>
+        <button type="button" class="seg-btn" id="pr" onclick="selEntrega('retiro')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-4v-6H8v6H4a1 1 0 0 1-1-1Z"/></svg>
+          Retiro en local
+        </button>
       </div>
       <div id="dirWrap">
-        <label class="lbl">DIRECCION DE ENTREGA</label>
+        <label class="lbl">DIRECCION</label>
         <input class="inp" id="inp_d" type="text" placeholder="Calle y n&uacute;mero, La Plata">
       </div>
 
       <label class="lbl">TELEFONO</label>
       <input class="inp" id="inp_t" type="tel" placeholder="Tu n&uacute;mero de contacto">
 
-      <label class="lbl">FORMA DE PAGO</label>
-      <div class="pagos">
-        <label class="po on" id="pt" onclick="selPago('transferencia')">
-          <input type="radio" name="pago" checked>
-          <div class="pi">&#128242;</div><div class="pn">Transferencia</div>
-        </label>
-        <label class="po" id="pe" onclick="selPago('efectivo')">
-          <input type="radio" name="pago">
-          <div class="pi">&#128181;</div><div class="pn">Efectivo</div>
-        </label>
-      </div>
-      <div class="mp-box" id="mpBox">
-        <button class="mp-pay-btn" id="mpPayBtn" onclick="pagarConMercadoPago()">
-          <span id="mpPayBtnTxt">Pagar ahora con Mercado Pago</span>
+      <div class="sect-h">Pago</div>
+      <div class="seg">
+        <button type="button" class="seg-btn on" id="pt" onclick="selPago('transferencia')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Mercado Pago
         </button>
-        <div class="mp-pay-err" id="mpPayErr"></div>
-        <div class="mp-sep"><span>o transferi manualmente</span></div>
-        <div class="mp-label">TRANSFERI A ESTE ALIAS</div>
-        <div class="mp-alias" id="mpAlias">Ramiro.dlz</div>
-        <button class="mp-copy" id="mpCopyBtn" onclick="copiarAlias()">Copiar alias</button>
-        <div class="mp-nota">Abri Mercado Pago, transferi el total del pedido (precio con transferencia), y despues confirma abajo para enviar el pedido por WhatsApp.</div>
+        <button type="button" class="seg-btn" id="pe" onclick="selPago('efectivo')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/></svg>
+          Efectivo
+        </button>
       </div>
+
+      <div id="mpPromo">
+        <div class="mp-promo">
+          <div class="mp-promo-h">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            Pagas online, sin vueltas
+          </div>
+          <p>Confirmas en Mercado Pago por el total exacto del pedido y listo.</p>
+        </div>
+        <button type="button" class="mp-link" onclick="toggleMpManual()">
+          &iquest;Preferis transferir vos mismo?
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div id="mpManual" style="display:none">
+        <button type="button" class="mp-link back" onclick="toggleMpManual()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          Volver a pagar con Mercado Pago
+        </button>
+        <div class="mp-manual-box">
+          <div class="mp-manual-lbl">TRANSFERI A ESTE ALIAS</div>
+          <div class="mp-manual-row">
+            <div class="mp-alias" id="mpAlias">Ramiro.dlz</div>
+            <button class="mp-copy" id="mpCopyBtn" onclick="copiarAlias()">Copiar alias</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="efectivoNote" style="display:none">
+        <div class="efectivo-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:1px"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/></svg>
+          <p>Pagas en efectivo cuando recibis tu pedido o cuando pasas a retirarlo.</p>
+        </div>
+      </div>
+
       <div class="confirm-box" id="confirmBox">
         <input type="checkbox" id="chkTransferido" onchange="toggleEnviarBtn()">
         <label for="chkTransferido">Ya hice la transferencia y quiero enviar el pedido</label>
       </div>
+
       <div class="tbar">
         <span class="tlbl">TOTAL</span>
         <span class="tval" id="tv">$0</span>
       </div>
-      <button class="sbtn" onclick="enviarPedido()">ENVIAR PEDIDO POR WHATSAPP</button>
+      <button class="mp-pay-btn" id="mpPayBtn" onclick="pagarConMercadoPago()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        <span id="mpPayBtnTxt">Pagar con Mercado Pago</span>
+      </button>
+      <div class="mp-pay-err" id="mpPayErr"></div>
+      <button class="sbtn" id="sbtn" onclick="enviarPedido()" style="display:none">ENVIAR PEDIDO POR WHATSAPP</button>
     </div>
   </div>
 </div>
@@ -599,6 +634,7 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
 var WA = "5492216138637";
 var carrito = {};
 var pago = "transferencia";
+var mpManual = false;
 var entrega = "domicilio";
 var catActiva = null;
 var busqueda = "";
@@ -1151,22 +1187,34 @@ function selEntrega(t){
 
 function selPago(t) {
   pago = t;
+  mpManual = false;
   document.getElementById("pt").classList.toggle("on", t === "transferencia");
   document.getElementById("pe").classList.toggle("on", t === "efectivo");
-  var mpBox = document.getElementById("mpBox");
-  var confirmBox = document.getElementById("confirmBox");
-  var chk = document.getElementById("chkTransferido");
-  if (t === "transferencia") {
-    mpBox.classList.add("show");
-    confirmBox.classList.add("show");
-  } else {
-    mpBox.classList.remove("show");
-    confirmBox.classList.remove("show");
-    chk.checked = false;
-  }
+  document.getElementById("chkTransferido").checked = false;
+  renderPagoUI();
   toggleEnviarBtn();
   renderCarrito();
   actuBadge();
+}
+
+function toggleMpManual() {
+  mpManual = !mpManual;
+  document.getElementById("chkTransferido").checked = false;
+  renderPagoUI();
+  toggleEnviarBtn();
+}
+
+function renderPagoUI() {
+  var showPromo = pago === "transferencia" && !mpManual;
+  var showManual = pago === "transferencia" && mpManual;
+  var showEfectivo = pago === "efectivo";
+  document.getElementById("mpPromo").style.display = showPromo ? "block" : "none";
+  document.getElementById("mpManual").style.display = showManual ? "block" : "none";
+  document.getElementById("efectivoNote").style.display = showEfectivo ? "block" : "none";
+  document.getElementById("confirmBox").classList.toggle("show", showManual);
+  document.getElementById("mpPayBtn").style.display = showPromo ? "flex" : "none";
+  document.getElementById("mpPayErr").classList.remove("show");
+  document.getElementById("sbtn").style.display = showPromo ? "none" : "block";
 }
 
 function copiarAlias() {
@@ -1239,7 +1287,7 @@ function pagarConMercadoPago(){
     })
     .catch(function(e){
       btn.disabled = false;
-      btnTxt.textContent = "Pagar ahora con Mercado Pago";
+      btnTxt.textContent = "Pagar con Mercado Pago";
       err.textContent = "No pudimos conectar con Mercado Pago (" + e.message + "). Proba de nuevo o transferi manualmente abajo.";
       err.classList.add("show");
     });
