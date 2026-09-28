@@ -269,6 +269,7 @@ button:active{transform:scale(.94)}
 .tlbl{font-family:"PT Sans",sans-serif;font-size:12px;font-weight:800;color:#888;letter-spacing:.5px}
 .tval{font-family:"Domine",serif;font-size:22px;font-weight:700;color:var(--rojo);font-variant-numeric:tabular-nums}
 .mp-pay-btn{width:100%;background:#009EE3;color:#fff;border:none;padding:14px;border-radius:9px;font-family:"PT Sans",sans-serif;font-size:14.5px;font-weight:900;cursor:pointer;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px}
+.mp-logo-inline{height:20px;width:auto;vertical-align:-5px;display:inline-block;margin-left:2px}
 .mp-pay-btn:disabled{opacity:.6;cursor:not-allowed}
 .mp-pay-btn:not(:disabled):hover{background:#00b0f0}
 .sbtn{width:100%;background:var(--verde);border:none;color:#fff;padding:14px;border-radius:9px;font-family:"PT Sans",sans-serif;font-size:14.5px;font-weight:900;cursor:pointer;letter-spacing:.3px}
@@ -621,8 +622,7 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
         <span class="tval" id="tv">$0</span>
       </div>
       <button class="mp-pay-btn" id="mpPayBtn" onclick="pagarConMercadoPago()">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-        <span id="mpPayBtnTxt">Pagar con Mercado Pago</span>
+        <span id="mpPayBtnTxt">Pagar con <img src="images/mercadopago-logo-white.png" alt="Mercado Pago" class="mp-logo-inline"></span>
       </button>
       <div class="mp-pay-err" id="mpPayErr"></div>
       <button class="sbtn" id="sbtn" onclick="enviarPedido()" style="display:none">ENVIAR PEDIDO POR WHATSAPP</button>
@@ -1287,7 +1287,7 @@ function pagarConMercadoPago(){
     })
     .catch(function(e){
       btn.disabled = false;
-      btnTxt.textContent = "Pagar con Mercado Pago";
+      btnTxt.innerHTML = 'Pagar con <img src="images/mercadopago-logo-white.png" alt="Mercado Pago" class="mp-logo-inline">';
       err.textContent = "No pudimos conectar con Mercado Pago (" + e.message + "). Proba de nuevo o transferi manualmente abajo.";
       err.classList.add("show");
     });
