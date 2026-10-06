@@ -11,20 +11,6 @@
 body{background:var(--blanco);color:var(--negro);font-family:"PT Sans",sans-serif;min-height:100vh}
 a{color:inherit}
 
-/* AGE GATE */
-.agewrap{position:fixed;inset:0;background:rgba(10,10,10,.94);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px}
-.agewrap[hidden]{display:none}
-.agebox{background:#fff;border-radius:16px;padding:32px 26px;max-width:380px;text-align:center}
-.age-ico{font-size:40px;margin-bottom:10px}
-.age-tag{font-size:11px;color:var(--rojo);font-weight:800;letter-spacing:2px;margin-bottom:6px}
-.agebox h2{font-family:"Domine",serif;font-size:27px;font-weight:700;margin-bottom:12px}
-.agebox p{font-size:13.5px;color:#555;line-height:1.5;margin-bottom:20px}
-.agebtns{display:flex;gap:10px}
-.agebtns button{flex:1;padding:13px;border-radius:8px;font-family:"PT Sans",sans-serif;font-size:15px;font-weight:800;letter-spacing:.5px;cursor:pointer;border:2px solid var(--negro)}
-.age-si{background:var(--negro);color:#fff}
-.age-no{background:#fff;color:var(--negro)}
-.age-blocked{display:none;font-size:13px;color:var(--rojo-osc);font-weight:700;margin-top:14px}
-
 /* BANNER SUPERIOR */
 .topbanner{background:var(--rojo);color:#fff;text-align:center;padding:8px 12px;font-size:11px;font-weight:700;letter-spacing:.3px}
 
@@ -387,19 +373,6 @@ header{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:cen
 </head>
 <body>
 
-<div class="agewrap" id="agegate">
-  <div class="agebox">
-    <div class="age-ico">&#127866;</div>
-    <div class="age-tag">UN PASO ANTES</div>
-    <h2>&iquest;YA CUMPLISTE 18?</h2>
-    <p>Por ley, solo pueden comprar bebidas con alcohol las personas mayores de edad. Confirmanos tu edad para seguir navegando el cat&aacute;logo.</p>
-    <div class="agebtns">
-      <button class="age-si" onclick="confirmarEdad(true)">TENGO 18 O MAS</button>
-      <button class="age-no" onclick="confirmarEdad(false)">TODAVIA NO</button>
-    </div>
-    <div class="age-blocked" id="ageBlocked">Este cat&aacute;logo es exclusivo para personas mayores de 18 a&ntilde;os.</div>
-  </div>
-</div>
 
 <div class="topbanner">ENVIOS EN EL DIA &middot; LA PLATA &middot; 24HS TODOS LOS DIAS</div>
 
@@ -1406,21 +1379,8 @@ function enviarPedido() {
   window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
 }
 
-/* ---------- AGE GATE ---------- */
-function confirmarEdad(si){
-  if (si) {
-    try { localStorage.setItem("jrb_edad_ok", "1"); } catch(e){}
-    document.getElementById("agegate").hidden = true;
-  } else {
-    document.getElementById("ageBlocked").style.display = "block";
-    document.querySelector(".agebtns").style.display = "none";
-  }
-}
-
 /* ---------- INIT ---------- */
 (function init(){
-  /* cartel de mayoria de edad desactivado */
-  document.getElementById("agegate").hidden = true;
   setHero(0);
   cicloHero();
   renderCatBody();
