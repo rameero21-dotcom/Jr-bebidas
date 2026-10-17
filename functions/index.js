@@ -11,6 +11,10 @@ const MP_ACCESS_TOKEN = defineSecret("MP_ACCESS_TOKEN");
 // Bebidas tiene dominio propio, agregarlo acá también.
 const ORIGEN_PERMITIDO = "https://rameero21-dotcom.github.io";
 
+// La web vive en un subdirectorio de GitHub Pages: las URLs de vuelta
+// tienen que incluirlo o el cliente cae en un 404.
+const URL_WEB = `${ORIGEN_PERMITIDO}/Jr-bebidas/`;
+
 /**
  * Recibe el carrito armado en la web (items con nombre, cantidad y
  * precio unitario) y crea una preferencia de pago en Mercado Pago
@@ -60,9 +64,9 @@ exports.crearPreferenciaMercadoPago = onRequest(
         items,
         payer: nombreCliente ? { name: nombreCliente } : undefined,
         back_urls: {
-          success: `${ORIGEN_PERMITIDO}/?pago=aprobado`,
-          pending: `${ORIGEN_PERMITIDO}/?pago=pendiente`,
-          failure: `${ORIGEN_PERMITIDO}/?pago=rechazado`,
+          success: `${URL_WEB}?pago=aprobado`,
+          pending: `${URL_WEB}?pago=pendiente`,
+          failure: `${URL_WEB}?pago=rechazado`,
         },
         auto_return: "approved",
         statement_descriptor: "JR BEBIDAS",
@@ -79,7 +83,8 @@ exports.crearPreferenciaMercadoPago = onRequest(
 
       const datos = await respuestaMp.json();
       if (!respuestaMp.ok) {
-        logger.error("Mercado Pago rechazó la preferencia", datos);
+        const xRequestId = respuestaMp.headers.get("x-request-id");
+        logger.error("Mercado Pago rechazó la preferencia", { datos, xRequestId });
         res.status(502).json({ error: "No se pudo generar el link de pago" });
         return;
       }

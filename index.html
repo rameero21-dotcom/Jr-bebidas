@@ -1236,6 +1236,12 @@ function pagarConMercadoPago(){
   var keys = Object.keys(carrito).filter(function(k){ return carrito[k].qty > 0; });
   if (!keys.length) return;
 
+  var n = document.getElementById("inp_n").value.trim();
+  var d = entrega === "domicilio" ? document.getElementById("inp_d").value.trim() : "";
+  var t = document.getElementById("inp_t").value.trim();
+  if (!n || !t || (entrega === "domicilio" && !d)) { alert("Completá nombre, teléfono" + (entrega==="domicilio" ? " y dirección." : ".")); return; }
+  var mensajePedido = armarMensajePedido(n, d, t, "Mercado Pago (pagado online)");
+
   var items = keys.map(function(k){
     return {
       title: carrito[k].n,
@@ -1264,6 +1270,7 @@ function pagarConMercadoPago(){
       if (!res.ok || !res.data.init_point) {
         throw new Error(res.data && res.data.error ? res.data.error : "No se pudo generar el link de pago");
       }
+      try { localStorage.setItem("jrb_pedido_mp", mensajePedido); } catch(e){}
       window.location.href = res.data.init_point;
     })
     .catch(function(e){
@@ -1360,28 +1367,81 @@ function enviarPedido() {
     var chk = document.getElementById("chkTransferido");
     if (!chk.checked) { alert("Confirmá que ya hiciste la transferencia antes de enviar el pedido."); return; }
   }
+  var msg = armarMensajePedido(n, d, t, pago === "transferencia" ? "Transferencia ABONADA a alias Ramiro.dlz" : "Efectivo (se paga al recibir)");
+  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
+}
+
+function armarMensajePedido(n, d, t, lineaPago) {
   var msg = "Nuevo Pedido JR Bebidas Dark Store\n\n";
   msg += "Cliente: " + n + "\n";
   msg += entrega === "domicilio" ? ("Entrega: Envío a domicilio\nDirección: " + d + "\n") : "Entrega: Retiro en local\n";
   msg += "Tel: " + t + "\n";
-  if (pago === "transferencia") {
-    msg += "Pago: Transferencia ABONADA a alias Ramiro.dlz\n\n";
-  } else {
-    msg += "Pago: Efectivo (se paga al recibir)\n\n";
-  }
+  msg += "Pago: " + lineaPago + "\n\n";
   msg += "Productos:\n";
-  for (var i = 0; i < items.length; i++) {
-    var k = items[i].key, it = items[i].it;
+  for (var k in carrito) {
+    if (carrito[k].qty <= 0) continue;
     var pr = buscarProd(k);
-    var unit = pago === "transferencia" && pr ? pr.pe : it.p;
-    msg += "- " + it.n + " x" + it.qty + " = " + fmt(unit * it.qty) + "\n";
+    var unit = pago === "transferencia" && pr ? pr.pe : carrito[k].p;
+    msg += "- " + carrito[k].n + " x" + carrito[k].qty + " = " + fmt(unit * carrito[k].qty) + "\n";
   }
   msg += "\nTOTAL: " + fmt(calcTotal());
-  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
+  return msg;
+}
+
+/* ---------- VUELTA DE MERCADO PAGO ---------- */
+function volverDeMercadoPago(){
+  var estado = new URLSearchParams(location.search).get("pago");
+  if (!estado) return;
+  history.replaceState(null, "", location.pathname);
+
+  var textos = {
+    aprobado:  ["¡Pago recibido!", "Gracias por tu compra. Mandanos el pedido por WhatsApp para que lo preparemos y coordinemos la entrega."],
+    pendiente: ["Tu pago está pendiente", "Mercado Pago todavía está acreditando el pago. Mandanos el pedido por WhatsApp así lo tenemos listo apenas se confirme."],
+    rechazado: ["El pago no se completó", "No se te cobró nada. Podés volver a intentarlo o elegir otra forma de pago."]
+  };
+  var tx = textos[estado];
+  if (!tx) return;
+
+  var overlay = document.createElement("div");
+  overlay.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px";
+  var card = document.createElement("div");
+  card.style.cssText = "background:#fff;color:#111;border-radius:12px;padding:24px;max-width:360px;width:100%;text-align:center;font-family:'PT Sans',sans-serif";
+  var h = document.createElement("div");
+  h.style.cssText = "font-family:'Domine',serif;font-size:22px;font-weight:700;margin-bottom:10px";
+  h.textContent = tx[0];
+  var p = document.createElement("p");
+  p.style.cssText = "font-size:14px;line-height:1.5;margin:0 0 18px";
+  p.textContent = tx[1];
+  card.appendChild(h);
+  card.appendChild(p);
+
+  if (estado !== "rechazado") {
+    var wa = document.createElement("button");
+    wa.style.cssText = "width:100%;background:#25d366;color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:900;cursor:pointer;margin-bottom:8px";
+    wa.textContent = "ENVIAR PEDIDO POR WHATSAPP";
+    wa.onclick = function(){
+      var msg = "";
+      try { msg = localStorage.getItem("jrb_pedido_mp") || ""; } catch(e){}
+      if (!msg) msg = "Hola, acabo de pagar mi pedido por Mercado Pago.";
+      window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
+      try { localStorage.removeItem("jrb_pedido_mp"); } catch(e){}
+    };
+    card.appendChild(wa);
+  }
+
+  var cerrar = document.createElement("button");
+  cerrar.style.cssText = "width:100%;background:#eee;color:#111;border:none;padding:12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer";
+  cerrar.textContent = "Cerrar";
+  cerrar.onclick = function(){ overlay.remove(); };
+  card.appendChild(cerrar);
+
+  overlay.appendChild(card);
+  document.body.appendChild(overlay);
 }
 
 /* ---------- INIT ---------- */
 (function init(){
+  volverDeMercadoPago();
   setHero(0);
   cicloHero();
   renderCatBody();
